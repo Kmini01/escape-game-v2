@@ -1014,51 +1014,38 @@ ${missionTitle(5,"업무보고서 작성")}
 
 <div class="fileList">
 
-<div class="fileItem"
-onclick="selectFile(this,'2026')">
+<div class="choiceGroup">
 
+<button class="choiceBtn"
+onclick="selectMission5(this, true)">
 📊 2026 상반기 ESG 실적.xlsx
+</button>
 
-</div>
-
-<div class="fileItem"
-onclick="selectFile(this,'report')">
-
+<button class="choiceBtn"
+onclick="selectMission5(this, false)">
 📄 2025 ESG 보고서.docx
+</button>
 
-</div>
-
-<div class="fileItem"
-onclick="selectFile(this,'2025')">
-
+<button class="choiceBtn"
+onclick="selectMission5(this, true)">
 📊 2025 상반기 ESG 실적.xlsx
+</button>
 
-</div>
-
-<div class="fileItem"
-onclick="selectFile(this,'memo')">
-
+<button class="choiceBtn"
+onclick="selectMission5(this, false)">
 📝 ESG 회의 메모.txt
+</button>
+
+<button class="choiceBtn"
+onclick="selectMission5(this, false)">
+🖼 회사 로고.png
+</button>
 
 </div>
 
-<div class="fileItem"
-onclick="selectFile(this,'logo')">
-
-🖼️ 회사 로고.png
-
-</div>
-
-</div>
-
-<button
-
-class="choiceBtn"
-
+<button class="choiceBtn"
 onclick="checkMission5()">
-
 ✅ 자료 선택 완료
-
 </button>
 
 </div>
