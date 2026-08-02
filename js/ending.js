@@ -1,8 +1,7 @@
-// ==========================
-// ending.js
-// ==========================
 
-// 역량 별 생성
+// ==========================
+// 엔딩
+// ==========================
 function makeSkillStars(score){
 
     score = Math.max(0, Math.min(5, score));
@@ -10,11 +9,6 @@ function makeSkillStars(score){
     return "★".repeat(score) + "☆".repeat(5-score);
 
 }
-
-// ==========================
-// 엔딩
-// ==========================
-
 function showEnding(){
 
     let title="";
