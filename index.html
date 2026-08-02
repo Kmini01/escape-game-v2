@@ -286,3 +286,598 @@
             </div>
 
         </div>
+        <!-- ===================================================== -->
+        <!-- 선택지 -->
+        <!-- ===================================================== -->
+
+        <div id="choiceArea">
+
+            <button
+                class="choiceButton"
+                id="choice1"
+                type="button">
+
+                선택지 1
+
+            </button>
+
+            <button
+                class="choiceButton"
+                id="choice2"
+                type="button">
+
+                선택지 2
+
+            </button>
+
+            <button
+                class="choiceButton"
+                id="choice3"
+                type="button">
+
+                선택지 3
+
+            </button>
+
+            <button
+                class="choiceButton"
+                id="choice4"
+                type="button">
+
+                선택지 4
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ===================================================== -->
+<!-- 출근증 -->
+<!-- ===================================================== -->
+
+<div id="idCardModal" class="modal hidden">
+
+    <div class="idCard">
+
+        <div class="companyLogo">
+
+            🏢 COMPANY
+
+        </div>
+
+        <div class="cardPhoto">
+
+            👤
+
+        </div>
+
+        <div class="cardInfo">
+
+            <div class="infoRow">
+
+                <span class="label">이름</span>
+
+                <span id="cardName">
+
+                    홍길동
+
+                </span>
+
+            </div>
+
+            <div class="infoRow">
+
+                <span class="label">직급</span>
+
+                <span>
+
+                    신입사원
+
+                </span>
+
+            </div>
+
+            <div class="infoRow">
+
+                <span class="label">부서</span>
+
+                <span id="cardDept">
+
+                    경영지원팀
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="cardBottom">
+
+            출근 준비 완료
+
+        </div>
+
+        <button
+            class="closeButton"
+            id="closeCardButton"
+            type="button">
+
+            확인
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- 미션 결과 -->
+<!-- ===================================================== -->
+
+<div id="resultModal" class="modal hidden">
+
+    <div class="resultCard">
+
+        <div id="resultIcon">
+
+            ✅
+
+        </div>
+
+        <h2 id="resultTitle">
+
+            좋은 선택!
+
+        </h2>
+
+        <p id="resultText">
+
+            결과가 표시됩니다.
+
+        </p>
+
+        <div class="resultStatus">
+
+            <div class="statusItem">
+
+                ⭐ 점수
+
+                <span id="resultScore">
+
+                    +10
+
+                </span>
+
+            </div>
+
+            <div class="statusItem">
+
+                ❤️ 신뢰도
+
+                <span id="resultTrust">
+
+                    +5
+
+                </span>
+
+            </div>
+
+            <div class="statusItem">
+
+                🕘 시간
+
+                <span id="resultTime">
+
+                    +10분
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <button
+            id="nextMissionButton"
+            type="button">
+
+            다음 미션 ▶
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- 게임 종료 -->
+<!-- ===================================================== -->
+
+<div id="endingModal" class="modal hidden">
+
+    <div class="endingCard">
+
+        <div id="endingEmoji">
+
+            🎉
+
+        </div>
+
+        <h1 id="endingTitle">
+
+            칼퇴 성공!
+
+        </h1>
+
+        <p id="endingMessage">
+
+            오늘도 무사히 퇴근했습니다.
+
+        </p>
+
+        <div class="endingScore">
+
+            <div class="endingItem">
+
+                ⭐ 최종 점수
+
+                <span id="finalScore">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div class="endingItem">
+
+                ❤️ 신뢰도
+
+                <span id="finalTrust">
+
+                    100
+
+                </span>
+
+            </div>
+
+            <div class="endingItem">
+
+                📋 진행률
+
+                <span id="finalProgress">
+
+                    100%
+
+                </span>
+
+            </div>
+
+            <div class="endingItem">
+
+                🏆 등급
+
+                <span id="finalRank">
+
+                    S
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div id="endingComment">
+
+            최고의 신입사원입니다!
+
+        </div>
+
+        <div class="endingButtons">
+
+            <button
+                id="restartButton"
+                type="button">
+
+                🔄 다시하기
+
+            </button>
+
+            <button
+                id="shareButton"
+                type="button">
+
+                📤 결과 저장
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- Toast Message -->
+<!-- ===================================================== -->
+
+<div id="toastMessage" class="toast hidden">
+
+    <span id="toastIcon">
+
+        ✅
+
+    </span>
+
+    <span id="toastText">
+
+        저장되었습니다.
+
+    </span>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- Mission Complete Effect -->
+<!-- ===================================================== -->
+
+<div id="missionComplete" class="hidden">
+
+    <div class="completeBox">
+
+        <h2>
+
+            🎉 MISSION CLEAR
+
+        </h2>
+
+        <p>
+
+            다음 미션으로 이동합니다.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- Pause -->
+<!-- ===================================================== -->
+
+<div id="pauseModal" class="modal hidden">
+
+    <div class="pauseCard">
+
+        <h2>
+
+            ⏸ 일시정지
+
+        </h2>
+
+        <button
+            id="resumeButton"
+            type="button">
+
+            ▶ 이어하기
+
+        </button>
+
+        <button
+            id="restartGameButton"
+            type="button">
+
+            🔄 처음부터
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- Footer -->
+<!-- ===================================================== -->
+
+<footer id="footer">
+
+    <small>
+
+        MISSION : 칼퇴 대작전! Version 2.0
+
+    </small>
+
+</footer>
+
+<!-- ===================================================== -->
+<!-- Audio -->
+<!-- ===================================================== -->
+
+<audio
+    id="bgm"
+    preload="auto"
+    loop>
+
+    <source
+        src="assets/audio/bgm.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="clickSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/click.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="correctSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/correct.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="wrongSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/wrong.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="successSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/success.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="failSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/fail.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<audio
+    id="endingSound"
+    preload="auto">
+
+    <source
+        src="assets/audio/ending.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<!-- ===================================================== -->
+<!-- Hidden Data -->
+<!-- ===================================================== -->
+
+<input
+    type="hidden"
+    id="currentMission"
+    value="0">
+
+<input
+    type="hidden"
+    id="currentScore"
+    value="0">
+
+<input
+    type="hidden"
+    id="currentTrust"
+    value="100">
+
+<input
+    type="hidden"
+    id="currentTime"
+    value="540">
+
+<input
+    type="hidden"
+    id="currentProgress"
+    value="0">
+
+<!-- ===================================================== -->
+<!-- Script -->
+<!-- ===================================================== -->
+
+<script src="js/missions.js"></script>
+
+<script src="js/ending.js"></script>
+
+<script src="js/app.js"></script>
+<!-- ===================================================== -->
+<!-- JavaScript 실행 전 체크용 템플릿 -->
+<!-- ===================================================== -->
+
+<template id="missionTemplate">
+
+    <article class="missionCard">
+
+        <div class="missionTop">
+
+            <span class="missionStep">
+
+                Mission
+
+            </span>
+
+            <span class="missionLevel">
+
+                LEVEL 1
+
+            </span>
+
+        </div>
+
+        <h3 class="templateMissionTitle">
+
+            미션 제목
+
+        </h3>
+
+        <p class="templateMissionDesc">
+
+            미션 설명
+
+        </p>
+
+    </article>
+
+</template>
+
+<!-- ===================================================== -->
+<!-- 효과용 캔버스 -->
+<!-- ===================================================== -->
+
+<canvas
+    id="effectCanvas"
+    width="1920"
+    height="1080">
+
+</canvas>
+
+<!-- ===================================================== -->
+<!-- No Script -->
+<!-- ===================================================== -->
+
+<noscript>
+
+    <div class="noscriptBox">
+
+        <h2>
+
+            JavaScript가 비활성화되어 있습니다.
+
+        </h2>
+
+        <p>
+
+            '칼퇴 대작전'을 플레이하려면 JavaScript를 활성화해 주세요.
+
+        </p>
+
+    </div>
+
+</noscript>
+
+</body>
+
+</html>
