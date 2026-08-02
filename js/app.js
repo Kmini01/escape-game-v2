@@ -346,18 +346,20 @@ if(stars){
 
 function closeResult(){
 
-    document.getElementById("resultModal").classList.add("hidden");
+    document
+        .getElementById("resultModal")
+        .classList.add("hidden");
 
     const stars =
-document.getElementById("resultStars");
+        document.getElementById("resultStars");
 
-if(stars){
+    if(stars){
 
-    stars.classList.add("hidden");
+        stars.classList.add("hidden");
+
+    }
 
 }
-}
-
 // ==========================
 // 현재 미션
 // ==========================
@@ -679,27 +681,23 @@ document.addEventListener("keydown",(e)=>{
 
 updateHUD();
 
-document
-.getElementById("startButton")
-.disabled = true;
+ document.getElementById("startButton").disabled = true;
 
-document
-.getElementById("playerName")
-.value = "";
+    document.getElementById("playerName").value = "";
 
-gender = "";
+    gender = "";
 
-isReady = false;
+    isReady = false;
 
-document
-.querySelectorAll(".genderBtn")
-.forEach(btn=>btn.classList.remove("active"));
+    document
+        .querySelectorAll(".genderBtn")
+        .forEach(btn => btn.classList.remove("active"));
 
-const readyBtn =
-document.getElementById("idCardButton");
+    const readyBtn =
+        document.getElementById("idCardButton");
 
-readyBtn.innerHTML =
-"☐ 출근 준비 완료";
+    readyBtn.innerHTML = "☐ 출근 준비 완료";
 
-readyBtn.classList.remove("complete");
+    readyBtn.classList.remove("complete");
+
 }
