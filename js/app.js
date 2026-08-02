@@ -325,17 +325,7 @@ function showResult(icon,title,text){
     document.getElementById("resultTitle").textContent = title;
 
     document.getElementById("resultText").innerHTML = text;
-    const stars =
-document.getElementById("resultStars");
-
-if(stars){
-
-    stars.classList.remove("hidden");
-
-    stars.textContent =
-    makeStars(game.score);
-
-}
+    
 
     document.getElementById("resultModal").classList.remove("hidden");
 
