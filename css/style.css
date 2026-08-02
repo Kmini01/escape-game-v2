@@ -766,17 +766,6 @@ img{
 
 #resultStars{
 
-    margin:10px 0 25px;
-
-    font-size:34px;
-
-    letter-spacing:6px;
-
-    color:var(--gold);
-
-    animation:starPop .7s ease;
-
-}
 
 #resultTitle{
 
@@ -1380,7 +1369,12 @@ img{
 
     gap:18px;
 
-    margin-top:30px;
+    margin-top:40px;
+
+}
+.missionCard h2{
+
+    margin-bottom:20px;
 
 }
 /* ==========================
