@@ -1377,6 +1377,73 @@ img{
     margin-bottom:20px;
 
 }
+   /* ==========================
+   COUNTDOWN
+========================== */
+
+#countdownScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,23,42,.92);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:3000;
+
+}
+
+.countBox{
+
+    background:#ffffff;
+
+    padding:60px 70px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+
+    animation:zoomIn .4s ease;
+
+}
+
+.countBox h1{
+
+    font-size:42px;
+
+    color:#2563eb;
+
+    margin:20px 0;
+
+}
+
+.countBox p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+#countNumber{
+
+    font-size:72px;
+
+    font-weight:800;
+
+    color:#2563eb;
+
+}
 /* ==========================
    END
 ========================== */
