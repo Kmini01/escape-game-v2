@@ -1,325 +1,628 @@
-/* ==========================
-   RESET
-========================== */
+// ==========================
+// MISSION : 칼퇴 대작전 Ver2
+// app.js
+// Part 1
+// ==========================
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+// ==========================
+// 플레이어 정보
+// ==========================
 
-html{
+let playerName = "";
+let gender = "";
+let isReady = false;
 
-    font-size:16px;
+// ==========================
+// 게임 데이터
+// ==========================
 
-}
+const game = {
 
-body{
+    score: 0,
 
-    font-family:"Pretendard",sans-serif;
+    trust: 100,
 
-    background:linear-gradient(180deg,#1e3a8a,#0f172a);
+    progress: 0,
 
-    color:#fff;
+    time: "09:00",
 
-    min-height:100vh;
+    schedule: 0,
+    problem: 0,
+    communication: 0,
+    report: 0,
+    manner: 0
 
-    overflow-x:hidden;
+};
 
-}
+// ==========================
+// 별 생성
+// ==========================
 
+function makeStars(score){
 
-/* ==========================
-   공통
-========================== */
+    score = Math.max(0, Math.min(5, score));
 
-.hidden{
-
-    display:none;
-
-}
-
-button{
-
-    font-family:inherit;
-
-    cursor:pointer;
-
-    border:none;
+    return "★".repeat(score) + "☆".repeat(5-score);
 
 }
 
-input{
+// ==========================
+// HUD
+// ==========================
 
-    font-family:inherit;
+function updateHUD(){
 
-    outline:none;
+    document.getElementById("gameTime").textContent = game.time;
 
-}
+    document.getElementById("score").textContent = game.score;
 
+    document.getElementById("trust").textContent = game.trust;
 
-/* ==========================
-   시작화면
-========================== */
-
-#startScreen{
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
+    document.getElementById("progress").textContent = game.progress;
 
 }
 
-.startCard{
+// ==========================
+// 성별 선택
+// ==========================
 
-    width:100%;
+document.querySelectorAll(".genderBtn").forEach(btn=>{
 
-    max-width:420px;
+    btn.addEventListener("click",()=>{
 
-    background:#ffffff;
+        document.querySelectorAll(".genderBtn").forEach(b=>{
 
-    color:#111827;
+            b.classList.remove("active");
 
-    border-radius:28px;
+        });
 
-    padding:35px 25px;
+        btn.classList.add("active");
 
-    text-align:center;
+        gender = btn.dataset.gender;
 
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    });
+
+});
+
+// ==========================
+// 출근 준비
+// ==========================
+
+document
+.getElementById("idCardButton")
+.addEventListener("click",()=>{
+
+    isReady = !isReady;
+
+    const btn =
+    document.getElementById("idCardButton");
+
+    if(isReady){
+
+        btn.innerHTML = "✅ 출근 준비 완료";
+
+        btn.style.background = "#16a34a";
+
+        btn.style.color = "#fff";
+
+    }
+
+    else{
+
+        btn.innerHTML = "☐ 출근 준비 완료";
+
+        btn.style.background = "#f3f4f6";
+
+        btn.style.color = "#111827";
+
+    }
+
+});
+
+// ==========================
+// 게임 시작
+// ==========================
+
+document
+.getElementById("startButton")
+.addEventListener("click",()=>{
+
+    playerName =
+    document
+    .getElementById("playerName")
+    .value
+    .trim();
+
+    if(playerName===""){
+
+        alert("이름을 입력해주세요.");
+
+        return;
+
+    }
+
+    if(gender===""){
+
+        alert("성별을 선택해주세요.");
+
+        return;
+
+    }
+
+    if(!isReady){
+
+        alert("출근 준비를 완료해주세요.");
+
+        return;
+
+    }
+
+    document
+    .getElementById("cardName")
+    .textContent = playerName;
+
+    document
+    .getElementById("idCardModal")
+    .classList.remove("hidden");
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("idCardModal")
+        .classList.add("hidden");
+
+        startGame();
+
+    },1500);
+
+});
+
+// ==========================
+// 게임 시작
+// ==========================
+
+function startGame(){
+
+    document
+    .getElementById("startScreen")
+    .style.display = "none";
+
+    document
+    .getElementById("hud")
+    .classList.remove("hidden");
+
+    updateHUD();
+
+    showCountdown();
 
 }
 
-.missionLabel{
+// ==========================
+// app.js
+// Part 2
+// ==========================
 
-    display:inline-block;
+// ==========================
+// 카운트다운
+// ==========================
 
-    background:#2563eb;
+function showCountdown(){
 
-    color:#fff;
+    document.body.insertAdjacentHTML("beforeend",`
 
-    padding:8px 18px;
+<div id="countdownScreen">
 
-    border-radius:30px;
+    <div class="countBox">
 
-    font-size:14px;
+        <div class="missionLabel">
 
-    font-weight:700;
+            🎮 LEVEL 1
 
-    margin-bottom:20px;
+        </div>
 
-}
+        <h1>
 
-.startCard h1{
+            칼퇴 대작전
 
-    font-size:42px;
+        </h1>
 
-    font-weight:800;
+        <p>
 
-    margin-bottom:10px;
+            오늘은 입사 첫날입니다.
 
-}
+        </p>
 
-.startCard h2{
+        <div id="countNumber">
 
-    font-size:30px;
+            3
 
-    color:#2563eb;
+        </div>
 
-    margin-bottom:20px;
+    </div>
 
-}
+</div>
 
-.startCard p{
+`);
 
-    line-height:1.7;
+    let count = 3;
 
-    color:#6b7280;
+    const timer = setInterval(()=>{
 
-    margin-bottom:30px;
+        count--;
 
-}
+        if(count>0){
 
+            document.getElementById("countNumber").textContent = count;
 
-/* ==========================
-   입력
-========================== */
+        }
 
-.playerForm{
+        else if(count===0){
 
-    text-align:left;
+            document.getElementById("countNumber").textContent = "START";
 
-}
+        }
 
-.playerForm label{
+        else{
 
-    display:block;
+            clearInterval(timer);
 
-    font-weight:700;
+            document.getElementById("countdownScreen").remove();
 
-    margin-bottom:8px;
+            showMission1();
 
-    margin-top:18px;
+        }
 
-}
-
-.playerForm input{
-
-    width:100%;
-
-    height:55px;
-
-    border-radius:14px;
-
-    border:2px solid #d1d5db;
-
-    padding:0 16px;
-
-    font-size:17px;
+    },1000);
 
 }
 
-.playerForm input:focus{
+// ==========================
+// 결과창
+// ==========================
 
-    border-color:#2563eb;
+function showResult(icon,title,text){
 
-}
+    document.getElementById("resultIcon").textContent = icon;
 
+    document.getElementById("resultTitle").textContent = title;
 
-/* ==========================
-   성별
-========================== */
+    document.getElementById("resultText").innerHTML = text;
 
-.genderGroup{
-
-    display:flex;
-
-    gap:12px;
+    document.getElementById("resultModal").classList.remove("hidden");
 
 }
 
-.genderBtn{
+// ==========================
+// 결과창 닫기
+// ==========================
 
-    flex:1;
+function closeResult(){
 
-    height:55px;
-
-    border-radius:14px;
-
-    background:#eef2ff;
-
-    color:#111827;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    transition:.2s;
+    document.getElementById("resultModal").classList.add("hidden");
 
 }
 
-.genderBtn.active{
+// ==========================
+// 현재 미션
+// ==========================
 
-    background:#2563eb;
+let currentMission = 1;
 
-    color:#fff;
+// ==========================
+// 다음 미션
+// ==========================
+
+document
+.getElementById("nextMissionButton")
+.addEventListener("click",()=>{
+
+    closeResult();
+
+    currentMission++;
+
+    switch(currentMission){
+
+        case 2:
+
+            showMission2();
+
+            break;
+
+        case 3:
+
+            showMission3();
+
+            break;
+
+        case 4:
+
+            showMission4();
+
+            break;
+
+        case 5:
+
+            showMission5();
+
+            break;
+
+        case 6:
+
+            showMission6();
+
+            break;
+
+        case 7:
+
+            showMission7();
+
+            break;
+
+        case 8:
+
+            showMission8();
+
+            break;
+
+        default:
+
+            showEnding();
+
+            break;
+
+    }
+
+});
+
+// ==========================
+// 게임 초기화
+// ==========================
+
+function resetGame(){
+
+    game.score = 0;
+
+    game.trust = 100;
+
+    game.progress = 0;
+
+    game.time = "09:00";
+
+    game.schedule = 0;
+
+    game.problem = 0;
+
+    game.communication = 0;
+
+    game.report = 0;
+
+    game.manner = 0;
+
+    currentMission = 1;
+
+    updateHUD();
+
+}
+// ==========================
+// app.js
+// Part 3
+// 공통 함수
+// ==========================
+
+// ==========================
+// 점수 증가
+// ==========================
+
+function addScore(point){
+
+    game.score += point;
+
+    if(game.score < 0){
+
+        game.score = 0;
+
+    }
+
+    if(game.score > 100){
+
+        game.score = 100;
+
+    }
+
+    updateHUD();
 
 }
 
+// ==========================
+// 신뢰도 증가
+// ==========================
 
-/* ==========================
-   버튼
-========================== */
+function addTrust(point){
 
-.readyButton,
-#startButton{
+    game.trust += point;
 
-    width:100%;
+    if(game.trust < 0){
 
-    height:60px;
+        game.trust = 0;
 
-    border-radius:16px;
+    }
 
-    font-size:18px;
+    if(game.trust > 100){
 
-    font-weight:700;
+        game.trust = 100;
 
-    margin-top:18px;
+    }
 
-}
-
-.readyButton{
-
-    background:#f3f4f6;
-
-    color:#111827;
+    updateHUD();
 
 }
 
-#startButton{
+// ==========================
+// 진행률 증가
+// ==========================
 
-    background:#2563eb;
+function addProgress(point){
 
-    color:#fff;
+    game.progress += point;
 
-}
+    if(game.progress > 100){
 
-#startButton:hover{
+        game.progress = 100;
 
-    background:#1d4ed8;
+    }
 
-}
-
-
-/* ==========================
-   HUD
-========================== */
-
-#hud{
-
-    position:fixed;
-
-    top:15px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:min(95%,760px);
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:14px 18px;
-
-    border-radius:20px;
-
-    background:rgba(15,23,42,.95);
-
-    backdrop-filter:blur(8px);
-
-    z-index:999;
+    updateHUD();
 
 }
 
-.hudItem{
+// ==========================
+// 시간 변경
+// ==========================
 
-    font-size:17px;
+function setGameTime(time){
 
-    font-weight:700;
+    game.time = time;
+
+    updateHUD();
 
 }
 
-/* ==========================
+// ==========================
+// 역량 증가
+// ==========================
+
+function addSkill(skill, point){
+
+    if(game[skill] !== undefined){
+
+        game[skill] += point;
+
+        if(game[skill] > 5){
+
+            game[skill] = 5;
+
+        }
+
+    }
+
+}
+
+// ==========================
+// 미션 종료 공통
+// ==========================
+
+function finishMission({
+
+    score = 0,
+
+    trust = 0,
+
+    progress = 10,
+
+    time = "",
+
+    skill = null,
+
+    skillPoint = 0,
+
+    icon,
+
+    title,
+
+    message
+
+}){
+
+    addScore(score);
+
+    addTrust(trust);
+
+    addProgress(progress);
+
+    if(time){
+
+        setGameTime(time);
+
+    }
+
+    if(skill){
+
+        addSkill(skill, skillPoint);
+
+    }
+
+    showResult(
+
+        icon,
+
+        title,
+
+        message
+
+    );
+
+}
+
+// ==========================
+// 카드 삭제
+// ==========================
+
+function removeMission(){
+
+    const card = document.getElementById("missionContainer");
+
+    if(card){
+
+        card.remove();
+
+    }
+
+}
+
+// ==========================
+// 미션 제목
+// ==========================
+
+function missionTitle(no,title){
+
+    return `
+
+<div class="missionLabel">
+
+🎯 MISSION ${no}
+
+</div>
+
+<h2>
+
+${title}
+
+</h2>
+
+`;
+
+}
+
+// ==========================
+// 엔터 방지
+// ==========================
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Enter"){
+
+        e.preventDefault();
+
+    }
+
+});
+
+// ==========================
+// 최초 HUD
+// ==========================
+
+updateHUD();
+       /* ==========================
    게임 영역
 ========================== */
 
@@ -352,6 +655,8 @@ input{
     padding:30px;
 
     box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    animation:fadeUp .35s ease;
 
 }
 
@@ -400,7 +705,7 @@ input{
 
     font-weight:700;
 
-    transition:.2s;
+    transition:.25s;
 
 }
 
@@ -408,7 +713,7 @@ input{
 
     background:#2563eb;
 
-    color:white;
+    color:#ffffff;
 
     transform:translateY(-2px);
 
@@ -416,7 +721,7 @@ input{
 
 
 /* ==========================
-   순서선택 카드 (Mission2,4)
+   Mission2,4 순서 카드
 ========================== */
 
 .orderCard{
@@ -435,9 +740,11 @@ input{
 
 .orderCard h3{
 
+    color:#2563eb;
+
     margin-bottom:10px;
 
-    color:#2563eb;
+    font-size:18px;
 
 }
 
@@ -451,15 +758,15 @@ input{
 
     border:2px solid #cbd5e1;
 
-    font-size:16px;
-
     padding:0 12px;
+
+    font-size:16px;
 
 }
 
 
 /* ==========================
-   파일 선택
+   Mission5 파일 선택
 ========================== */
 
 .fileList{
@@ -476,9 +783,11 @@ input{
 
     display:flex;
 
-    justify-content:space-between;
+    flex-direction:column;
 
-    align-items:center;
+    align-items:flex-start;
+
+    gap:6px;
 
     padding:18px;
 
@@ -490,6 +799,8 @@ input{
 
     transition:.2s;
 
+    background:white;
+
 }
 
 .fileItem:hover{
@@ -500,9 +811,9 @@ input{
 
 .fileItem.selected{
 
-    border-color:#2563eb;
-
     background:#dbeafe;
+
+    border-color:#2563eb;
 
 }
 
@@ -535,7 +846,7 @@ input{
 
     width:100%;
 
-    max-width:480px;
+    max-width:500px;
 
     background:white;
 
@@ -546,6 +857,8 @@ input{
     padding:35px;
 
     text-align:center;
+
+    animation:fadeUp .35s ease;
 
 }
 
@@ -567,9 +880,9 @@ input{
 
 #resultText{
 
-    line-height:1.9;
-
     color:#4b5563;
+
+    line-height:1.8;
 
     margin-bottom:25px;
 
@@ -593,20 +906,130 @@ input{
 
 }
 
+#nextMissionButton:hover{
+
+    background:#1d4ed8;
+
+}
+
 
 /* ==========================
-   엔딩 리포트
+   출근증
+========================== */
+
+.idCard{
+
+    width:100%;
+
+    max-width:340px;
+
+    background:white;
+
+    color:#111827;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.idTitle{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.idName{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+.idJob{
+
+    color:#6b7280;
+
+    margin-bottom:20px;
+
+}
+
+.idReady{
+
+    margin-bottom:25px;
+
+}
+
+#closeCardButton{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================
+   엔딩
+========================== */
+
+.endingCard{
+
+    text-align:center;
+
+}
+
+.endingCard h1{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.endingCard h2{
+
+    margin:20px 0;
+
+}
+
+
+/* ==========================
+   리포트
 ========================== */
 
 .reportBox{
 
-    margin-top:25px;
+    margin-top:20px;
 
-    background:#f8fafc;
+    padding:20px;
+
+    border:2px solid #e5e7eb;
 
     border-radius:18px;
 
-    padding:20px;
+    background:#f8fafc;
 
 }
 
@@ -615,6 +1038,8 @@ input{
     display:flex;
 
     justify-content:space-between;
+
+    align-items:center;
 
     padding:12px 0;
 
@@ -643,9 +1068,17 @@ input{
 
 @media(max-width:768px){
 
+    #gameContainer{
+
+        margin-top:90px;
+
+        padding:14px;
+
+    }
+
     .startCard{
 
-        padding:25px 18px;
+        padding:24px 18px;
 
     }
 
@@ -671,15 +1104,26 @@ input{
 
     }
 
+    .playerForm input,
+    select{
+
+        font-size:16px;
+
+    }
+
+    button{
+
+        font-size:16px;
+
+    }
+
     #hud{
 
         width:95%;
 
-        font-size:14px;
+        padding:10px;
 
         gap:8px;
-
-        padding:10px;
 
     }
 
@@ -691,7 +1135,7 @@ input{
 
     .resultCard{
 
-        padding:25px;
+        padding:24px;
 
     }
 
@@ -707,6 +1151,31 @@ input{
     #gameContainer{
 
         max-width:900px;
+
+    }
+
+}
+
+
+/* ==========================
+   애니메이션
+========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
 
     }
 
