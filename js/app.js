@@ -680,9 +680,9 @@ document.addEventListener("keydown",(e)=>{
 // 최초 HUD
 // ==========================
 
-updateHUD();
+function resetStartScreen(){
 
- document.getElementById("startButton").disabled = true;
+    document.getElementById("startButton").disabled = true;
 
     document.getElementById("playerName").value = "";
 
@@ -692,12 +692,12 @@ updateHUD();
 
     document
         .querySelectorAll(".genderBtn")
-        .forEach(btn => btn.classList.remove("active"));
+        .forEach(btn=>btn.classList.remove("active"));
 
-    const readyBtn =
-        document.getElementById("idCardButton");
+    const readyBtn=document.getElementById("idCardButton");
 
-    readyBtn.innerHTML = "☐ 출근 준비 완료";
+    readyBtn.innerHTML="☐ 출근 준비 완료";
 
     readyBtn.classList.remove("complete");
 
+}
