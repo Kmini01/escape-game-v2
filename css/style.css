@@ -120,11 +120,17 @@ img{
 
 #startScreen{
 
-    width:100%;
     min-height:100vh;
 
     display:flex;
 
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
     justify-content:center;
     align-items:center;
 
@@ -165,13 +171,13 @@ img{
 
 .startCard{
 
-    position:relative;
-
-    z-index:10;
-
-    width:480px;
+     width:420px;
 
     max-width:90%;
+
+    position:relative;
+
+    z-index:2;
 
     background:#fff;
 
