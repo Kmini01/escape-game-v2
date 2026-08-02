@@ -1,825 +1,719 @@
-// ==========================
-// MISSION : 칼퇴 대작전 Ver2
-// app.js
-// Part 1
-// ==========================
-
-// ==========================
-// 플레이어 정보
-// ==========================
-
-let playerName = "";
-let gender = "";
-let isReady = false;
-
-// ==========================
-// 게임 데이터
-// ==========================
-
-const game = {
-
-    score: 0,
-
-    trust: 100,
-
-    progress: 0,
-
-    time: "09:00",
-
-    schedule: 0,
-    problem: 0,
-    communication: 0,
-    report: 0,
-    manner: 0
-
-};
-
-// ==========================
-// 별 생성
-// ==========================
-
-function makeStars(score){
-
-    score = Math.max(0, Math.min(5, score));
-
-    return "★".repeat(score) + "☆".repeat(5-score);
-
-}
-
-// ==========================
-// HUD
-// ==========================
-
-function updateHUD(){
-
-    document.getElementById("gameTime").textContent = game.time;
-
-    document.getElementById("score").textContent = game.score;
-
-    document.getElementById("trust").textContent = game.trust;
-
-    document.getElementById("progress").textContent = game.progress;
-
-}
-
-// ==========================
-// 성별 선택
-// ==========================
-
-document.querySelectorAll(".genderBtn").forEach(btn=>{
-
-    btn.addEventListener("click",()=>{
-
-        document.querySelectorAll(".genderBtn").forEach(b=>{
-
-            b.classList.remove("active");
-
-        });
-
-        btn.classList.add("active");
-
-        gender = btn.dataset.gender;
-
-    });
-
-});
-
-// ==========================
-// 출근 준비
-// ==========================
-
-document
-.getElementById("idCardButton")
-.addEventListener("click",()=>{
-
-    isReady = !isReady;
-
-    const btn =
-    document.getElementById("idCardButton");
-
-    if(isReady){
-
-        btn.innerHTML = "✅ 출근 준비 완료";
-
-        btn.style.background = "#16a34a";
-
-        btn.style.color = "#fff";
-
-    }
-
-    else{
-
-        btn.innerHTML = "☐ 출근 준비 완료";
-
-        btn.style.background = "#f3f4f6";
-
-        btn.style.color = "#111827";
-
-    }
-
-});
-
-// ==========================
-// 게임 시작
-// ==========================
-
-document
-.getElementById("startButton")
-.addEventListener("click",()=>{
-
-    playerName =
-    document
-    .getElementById("playerName")
-    .value
-    .trim();
-
-    if(playerName===""){
-
-        alert("이름을 입력해주세요.");
-
-        return;
-
-    }
-
-    if(gender===""){
-
-        alert("성별을 선택해주세요.");
-
-        return;
-
-    }
-
-    if(!isReady){
-
-        alert("출근 준비를 완료해주세요.");
-
-        return;
-
-    }
-
-    document
-    .getElementById("cardName")
-    .textContent = playerName;
-
-    document
-    .getElementById("idCardModal")
-    .classList.remove("hidden");
-
-    setTimeout(()=>{
-
-        document
-        .getElementById("idCardModal")
-        .classList.add("hidden");
-
-        startGame();
-
-    },1500);
-
-});
-
-// ==========================
-// 게임 시작
-// ==========================
-
-function startGame(){
-
-    document
-    .getElementById("startScreen")
-    .style.display = "none";
-
-    document
-    .getElementById("hud")
-    .classList.remove("hidden");
-
-    updateHUD();
-
-    showCountdown();
-
-}
-
-// ==========================
-// app.js
-// Part 2
-// ==========================
-
-// ==========================
-// 카운트다운
-// ==========================
-
-function showCountdown(){
-
-    document.body.insertAdjacentHTML("beforeend",`
-
-<div id="countdownScreen">
-
-    <div class="countBox">
-
-        <div class="missionLabel">
-
-            🎮 LEVEL 1
-
-        </div>
-
-        <h1>
-
-            칼퇴 대작전
-
-        </h1>
-
-        <p>
-
-            오늘은 입사 첫날입니다.
-
-        </p>
-
-        <div id="countNumber">
-
-            3
-
-        </div>
-
-    </div>
-
-</div>
-
-`);
-
-    let count = 3;
-
-    const timer = setInterval(()=>{
-
-        count--;
-
-        if(count>0){
-
-            document.getElementById("countNumber").textContent = count;
-
-        }
-
-        else if(count===0){
-
-            document.getElementById("countNumber").textContent = "START";
-
-        }
-
-        else{
-
-            clearInterval(timer);
-
-            document.getElementById("countdownScreen").remove();
-
-            showMission1();
-
-        }
-
-    },1000);
-
-}
-
-// ==========================
-// 결과창
-// ==========================
-
-function showResult(icon,title,text){
-
-    document.getElementById("resultIcon").textContent = icon;
-
-    document.getElementById("resultTitle").textContent = title;
-
-    document.getElementById("resultText").innerHTML = text;
-
-    document.getElementById("resultModal").classList.remove("hidden");
-
-}
-
-// ==========================
-// 결과창 닫기
-// ==========================
-
-function closeResult(){
-
-    document.getElementById("resultModal").classList.add("hidden");
-
-}
-
-// ==========================
-// 현재 미션
-// ==========================
-
-let currentMission = 1;
-
-// ==========================
-// 다음 미션
-// ==========================
-
-document
-.getElementById("nextMissionButton")
-.addEventListener("click",()=>{
-
-    closeResult();
-
-    currentMission++;
-
-    switch(currentMission){
-
-        case 2:
-
-            showMission2();
-
-            break;
-
-        case 3:
-
-            showMission3();
-
-            break;
-
-        case 4:
-
-            showMission4();
-
-            break;
-
-        case 5:
-
-            showMission5();
-
-            break;
-
-        case 6:
-
-            showMission6();
-
-            break;
-
-        case 7:
-
-            showMission7();
-
-            break;
-
-        case 8:
-
-            showMission8();
-
-            break;
-
-        default:
-
-            showEnding();
-
-            break;
-
-    }
-
-});
-
-// ==========================
-// 게임 초기화
-// ==========================
-
-function resetGame(){
-
-    game.score = 0;
-
-    game.trust = 100;
-
-    game.progress = 0;
-
-    game.time = "09:00";
-
-    game.schedule = 0;
-
-    game.problem = 0;
-
-    game.communication = 0;
-
-    game.report = 0;
-
-    game.manner = 0;
-
-    currentMission = 1;
-
-    updateHUD();
-
-}
-// ==========================
-// app.js
-// Part 3
-// 공통 함수
-// ==========================
-
-// ==========================
-// 점수 증가
-// ==========================
-
-function addScore(point){
-
-    game.score += point;
-
-    if(game.score < 0){
-
-        game.score = 0;
-
-    }
-
-    if(game.score > 100){
-
-        game.score = 100;
-
-    }
-
-    updateHUD();
-
-}
-
-// ==========================
-// 신뢰도 증가
-// ==========================
-
-function addTrust(point){
-
-    game.trust += point;
-
-    if(game.trust < 0){
-
-        game.trust = 0;
-
-    }
-
-    if(game.trust > 100){
-
-        game.trust = 100;
-
-    }
-
-    updateHUD();
-
-}
-
-// ==========================
-// 진행률 증가
-// ==========================
-
-function addProgress(point){
-
-    game.progress += point;
-
-    if(game.progress > 100){
-
-        game.progress = 100;
-
-    }
-
-    updateHUD();
-
-}
-
-// ==========================
-// 시간 변경
-// ==========================
-
-function setGameTime(time){
-
-    game.time = time;
-
-    updateHUD();
-
-}
-
-// ==========================
-// 역량 증가
-// ==========================
-
-function addSkill(skill, point){
-
-    if(game[skill] !== undefined){
-
-        game[skill] += point;
-
-        if(game[skill] > 5){
-
-            game[skill] = 5;
-
-        }
-
-    }
-
-}
-
-// ==========================
-// 미션 종료 공통
-// ==========================
-
-function finishMission({
-
-    score = 0,
-
-    trust = 0,
-
-    progress = 10,
-
-    time = "",
-
-    skill = null,
-
-    skillPoint = 0,
-
-    icon,
-
-    title,
-
-    message
-
-}){
-
-    addScore(score);
-
-    addTrust(trust);
-
-    addProgress(progress);
-
-    if(time){
-
-        setGameTime(time);
-
-    }
-
-    if(skill){
-
-        addSkill(skill, skillPoint);
-
-    }
-
-    showResult(
-
-        icon,
-
-        title,
-
-        message
-
-    );
-
-}
-
-// ==========================
-// 카드 삭제
-// ==========================
-
-function removeMission(){
-
-    const card = document.getElementById("missionContainer");
-
-    if(card){
-
-        card.remove();
-
-    }
-
-}
-
-// ==========================
-// 미션 제목
-// ==========================
-
-function missionTitle(no,title){
-
-    return `
-
-<div class="missionLabel">
-
-🎯 MISSION ${no}
-
-</div>
-
-<h2>
-
-${title}
-
-</h2>
-
-`;
-
-}
-
-// ==========================
-// 엔터 방지
-// ==========================
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Enter"){
-
-        e.preventDefault();
-
-    }
-
-});
-
-// ==========================
-// 최초 HUD
-// ==========================
-
-updateHUD();
-       /* ==========================
-   게임 영역
-========================== */
-
-#gameContainer{
-
-    width:100%;
-    max-width:900px;
-
-    margin:110px auto 40px;
-
-    padding:20px;
-
-}
-
+/* =======================================================
+   칼퇴 대작전! Ver2
+   style.css
+   Part 1 / 3
+======================================================= */
 
 /* ==========================
-   미션 카드
+   RESET
 ========================== */
 
-.missionCard{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    width:100%;
+html{
+    scroll-behavior:smooth;
+}
 
-    background:#ffffff;
+body{
 
-    color:#111827;
+    font-family:'Pretendard',sans-serif;
 
-    border-radius:24px;
+    background:#eef3f9;
 
-    padding:30px;
+    color:#1f2937;
 
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    overflow-x:hidden;
 
-    animation:fadeUp .35s ease;
+    min-height:100vh;
 
 }
 
-.missionCard h2{
+/* ==========================
+   COLOR
+========================== */
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#0f172a;
+
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#f59e0b;
+
+    --gold:#facc15;
+    --gold-dark:#eab308;
+
+    --white:#ffffff;
+
+    --gray50:#f8fafc;
+    --gray100:#f1f5f9;
+    --gray200:#e2e8f0;
+    --gray300:#cbd5e1;
+    --gray400:#94a3b8;
+    --gray500:#64748b;
+    --gray700:#334155;
+    --gray900:#0f172a;
+
+    --shadow:
+
+        0 10px 30px rgba(0,0,0,.12);
+
+    --radius:18px;
+
+    --transition:.25s ease;
+
+}
+
+/* ==========================
+   COMMON
+========================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    border:none;
+
+    transition:all .25s ease;
+
+}
+
+button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+}
+
+input{
+
+    font-family:inherit;
+
+    outline:none;
+
+}
+
+img{
+
+    max-width:100%;
+
+}
+
+/* ==========================
+   START SCREEN
+========================== */
+
+#startScreen{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    linear-gradient(135deg,
+    #2563eb 0%,
+    #1d4ed8 45%,
+    #0f172a 100%);
+
+}
+
+/* ==========================
+   BACKGROUND
+========================== */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top right,
+    rgba(255,255,255,.15),
+    transparent 45%);
+
+}
+
+/* ==========================
+   START CARD
+========================== */
+
+.startCard{
+
+    position:relative;
+
+    z-index:10;
+
+    width:480px;
+
+    max-width:90%;
+
+    background:#fff;
+
+    border-radius:26px;
+
+    padding:50px 45px;
+
+    box-shadow:var(--shadow);
 
     text-align:center;
 
-    font-size:30px;
-
-    margin:15px 0;
+    animation:cardUp .8s ease;
 
 }
-
-.missionCard p{
-
-    text-align:center;
-
-    line-height:1.8;
-
-    color:#4b5563;
-
-    margin-bottom:25px;
-
-}
-
 
 /* ==========================
-   선택 버튼
+   TITLE
 ========================== */
 
-.choiceBtn{
+.missionLabel{
 
-    width:100%;
+    display:inline-flex;
 
-    padding:18px;
+    align-items:center;
 
-    margin-top:15px;
+    justify-content:center;
 
-    border-radius:16px;
+    background:#e0ecff;
 
-    background:#eef4ff;
+    color:var(--primary);
 
-    color:#111827;
-
-    font-size:17px;
+    font-size:14px;
 
     font-weight:700;
 
-    transition:.25s;
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    margin-bottom:24px;
 
 }
 
-.choiceBtn:hover{
+.startCard h1{
 
-    background:#2563eb;
+    font-size:50px;
 
-    color:#ffffff;
+    font-weight:800;
 
-    transform:translateY(-2px);
+    color:var(--secondary);
+
+    letter-spacing:2px;
 
 }
 
+.startCard h2{
+
+    margin-top:10px;
+
+    font-size:36px;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+.startCard p{
+
+    margin-top:24px;
+
+    line-height:1.8;
+
+    color:var(--gray500);
+
+    font-size:17px;
+
+}
 
 /* ==========================
-   Mission2,4 순서 카드
+   FORM
 ========================== */
 
-.orderCard{
+.playerForm{
 
-    background:#f8fafc;
-
-    border:2px solid #dbeafe;
-
-    border-radius:16px;
-
-    padding:18px;
-
-    margin:14px 0;
-
-}
-
-.orderCard h3{
-
-    color:#2563eb;
-
-    margin-bottom:10px;
-
-    font-size:18px;
-
-}
-
-.orderCard select{
-
-    width:100%;
-
-    height:52px;
-
-    border-radius:12px;
-
-    border:2px solid #cbd5e1;
-
-    padding:0 12px;
-
-    font-size:16px;
-
-}
-
-
-/* ==========================
-   Mission5 파일 선택
-========================== */
-
-.fileList{
+    margin-top:40px;
 
     display:flex;
 
     flex-direction:column;
+
+    gap:18px;
+
+    text-align:left;
+
+}
+
+.playerForm label{
+
+    font-weight:700;
+
+    color:var(--gray700);
+
+}
+
+#playerName{
+
+    width:100%;
+
+    padding:16px;
+
+    border:2px solid var(--gray200);
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    transition:var(--transition);
+
+}
+
+#playerName:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ==========================
+   GENDER
+========================== */
+
+.genderGroup{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
 
     gap:14px;
 
 }
 
-.fileItem{
+.genderBtn{
+
+    background:var(--gray100);
+
+    color:var(--gray700);
+
+    padding:16px;
+
+    border-radius:12px;
+
+    border:2px solid transparent;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+.genderBtn:hover{
+
+    background:#dbeafe;
+
+    border-color:#93c5fd;
+
+    transform:translateY(-2px);
+
+}
+
+.genderBtn.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+/* =======================================================
+   칼퇴 대작전! Ver2
+   style.css
+   Part 2 / 3
+======================================================= */
+
+/* ==========================
+   BUTTON
+========================== */
+
+.readyButton{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:10px;
+
+    background:var(--warning);
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:var(--transition);
+
+}
+
+.readyButton:hover{
+
+    background:#d97706;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(245,158,11,.25);
+
+}
+
+.readyButton.complete{
+
+    background:var(--success);
+
+}
+
+#startButton{
+
+    width:100%;
+
+    padding:18px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:var(--transition);
+
+}
+
+#startButton:hover:not(:disabled){
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(37,99,235,.25);
+
+}
+
+#startButton:disabled{
+
+    background:var(--gray300);
+
+    color:var(--gray500);
+
+}
+
+/* ==========================
+   HUD
+========================== */
+
+#hud{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    width:100%;
+
+    background:var(--secondary);
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:40px;
+
+    padding:18px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.18);
+
+}
+
+.hudItem{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.hudItem span{
+
+    color:var(--gold);
+
+}
+
+/* ==========================
+   GAME AREA
+========================== */
+
+#gameContainer{
+
+    width:min(960px,92%);
+
+    margin:45px auto;
+
+    min-height:500px;
+
+}
+
+/* JS에서 생성되는 미션 카드 */
+
+.missionCard{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .45s ease;
+
+}
+
+.missionNumber{
+
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:var(--primary);
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+
+}
+
+.missionTitle{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:var(--secondary);
+
+    margin-bottom:20px;
+
+}
+
+.missionText{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:var(--gray700);
+
+    margin-bottom:35px;
+
+}
+
+/* ==========================
+   CHOICE BUTTON
+========================== */
+
+.choiceGroup{
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:flex-start;
+    gap:16px;
 
-    gap:6px;
+}
 
-    padding:18px;
+.choiceBtn{
+
+    width:100%;
+
+    text-align:left;
+
+    padding:18px 22px;
+
+    background:var(--gray50);
+
+    border:2px solid var(--gray200);
 
     border-radius:16px;
 
-    border:2px solid #dbeafe;
+    font-size:17px;
 
-    cursor:pointer;
+    font-weight:600;
 
-    transition:.2s;
-
-    background:white;
+    transition:var(--transition);
 
 }
 
-.fileItem:hover{
+.choiceBtn:hover{
 
     background:#eff6ff;
 
+    border-color:var(--primary);
+
+    transform:translateX(6px);
+
 }
 
-.fileItem.selected{
+.choiceBtn.correct{
+
+    background:#dcfce7;
+
+    border-color:var(--success);
+
+}
+
+.choiceBtn.wrong{
+
+    background:#fee2e2;
+
+    border-color:var(--danger);
+
+}
+
+/* ==========================
+   ID CARD
+========================== */
+
+#idCardModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,23,42,.65);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.idCard{
+
+    width:360px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    padding:40px 30px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    animation:zoomIn .35s ease;
+
+}
+
+.idTitle{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+.idName{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    color:var(--secondary);
+
+}
+
+.idJob{
+
+    margin-top:14px;
+
+    font-size:18px;
+
+    color:var(--gray500);
+
+}
+
+.idReady{
+
+    margin-top:28px;
+
+    padding:14px;
+
+    border-radius:12px;
 
     background:#dbeafe;
 
-    border-color:#2563eb;
+    color:var(--primary);
+
+    font-weight:700;
 
 }
 
-
 /* ==========================
-   결과창
+   RESULT MODAL
 ========================== */
 
 #resultModal{
@@ -828,7 +722,7 @@ updateHUD();
 
     inset:0;
 
-    background:rgba(0,0,0,.6);
+    background:rgba(15,23,42,.72);
 
     display:flex;
 
@@ -836,29 +730,27 @@ updateHUD();
 
     align-items:center;
 
-    padding:20px;
-
-    z-index:9999;
+    z-index:1100;
 
 }
 
 .resultCard{
 
-    width:100%;
+    width:520px;
 
-    max-width:500px;
+    max-width:92%;
 
-    background:white;
-
-    color:#111827;
+    background:#fff;
 
     border-radius:24px;
 
-    padding:35px;
+    padding:45px;
 
     text-align:center;
 
-    animation:fadeUp .35s ease;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    animation:zoomIn .35s ease;
 
 }
 
@@ -870,295 +762,164 @@ updateHUD();
 
 }
 
+/* ==========================
+   STAR RATING
+========================== */
+
+#resultStars{
+
+    margin:10px 0 25px;
+
+    font-size:34px;
+
+    letter-spacing:6px;
+
+    color:var(--gold);
+
+    animation:starPop .7s ease;
+
+}
+
 #resultTitle{
 
-    font-size:30px;
+    font-size:32px;
 
-    margin-bottom:15px;
+    font-weight:800;
+
+    color:var(--secondary);
+
+    margin-bottom:18px;
 
 }
 
 #resultText{
 
-    color:#4b5563;
+    font-size:18px;
 
     line-height:1.8;
 
-    margin-bottom:25px;
+    color:var(--gray700);
+
+    margin-bottom:35px;
 
 }
 
-#nextMissionButton{
+#nextMissionButton,
+#restartButton{
 
     width:100%;
 
-    height:58px;
+    padding:17px;
 
-    border-radius:16px;
-
-    background:#2563eb;
-
-    color:white;
+    border-radius:14px;
 
     font-size:18px;
 
     font-weight:700;
 
+    color:#fff;
+
+}
+
+#nextMissionButton{
+
+    background:var(--primary);
+
+    margin-bottom:14px;
+
 }
 
 #nextMissionButton:hover{
 
-    background:#1d4ed8;
+    background:var(--primary-dark);
 
 }
 
+#restartButton{
+
+    background:var(--success);
+
+}
+
+#restartButton:hover{
+
+    background:#15803d;
+
+}
+/* =======================================================
+   칼퇴 대작전! Ver2
+   style.css
+   Part 3 / 3
+======================================================= */
 
 /* ==========================
-   출근증
+   HOVER EFFECT
 ========================== */
 
-.idCard{
+.startCard,
+.idCard,
+.resultCard,
+.missionCard{
 
-    width:100%;
-
-    max-width:340px;
-
-    background:white;
-
-    color:#111827;
-
-    border-radius:24px;
-
-    padding:30px;
-
-    text-align:center;
+    transition:transform .3s ease,
+               box-shadow .3s ease;
 
 }
 
-.idTitle{
+.startCard:hover,
+.idCard:hover,
+.resultCard:hover{
 
-    font-size:24px;
+    transform:translateY(-3px);
 
-    font-weight:800;
-
-    margin-bottom:20px;
-
-}
-
-.idName{
-
-    font-size:30px;
-
-    font-weight:800;
-
-    color:#2563eb;
-
-    margin-bottom:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
 
 }
 
-.idJob{
+/* ==========================
+   SCROLL BAR
+========================== */
 
-    color:#6b7280;
+::-webkit-scrollbar{
 
-    margin-bottom:20px;
-
-}
-
-.idReady{
-
-    margin-bottom:25px;
+    width:10px;
 
 }
 
-#closeCardButton{
+::-webkit-scrollbar-track{
 
-    width:100%;
+    background:#eef3f9;
 
-    height:55px;
+}
 
-    border-radius:14px;
+::-webkit-scrollbar-thumb{
+
+    background:#94a3b8;
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748b;
+
+}
+
+/* ==========================
+   TEXT SELECT
+========================== */
+
+::selection{
 
     background:#2563eb;
 
-    color:white;
-
-    font-size:17px;
-
-    font-weight:700;
+    color:#ffffff;
 
 }
-
 
 /* ==========================
-   엔딩
-========================== */
-
-.endingCard{
-
-    text-align:center;
-
-}
-
-.endingCard h1{
-
-    font-size:42px;
-
-    margin-bottom:15px;
-
-}
-
-.endingCard h2{
-
-    margin:20px 0;
-
-}
-
-
-/* ==========================
-   리포트
-========================== */
-
-.reportBox{
-
-    margin-top:20px;
-
-    padding:20px;
-
-    border:2px solid #e5e7eb;
-
-    border-radius:18px;
-
-    background:#f8fafc;
-
-}
-
-.reportRow{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:12px 0;
-
-    border-bottom:1px solid #e5e7eb;
-
-}
-
-.reportRow:last-child{
-
-    border-bottom:none;
-
-}
-
-.star{
-
-    color:#fbbf24;
-
-    font-size:20px;
-
-}
-
-
-/* ==========================
-   모바일
-========================== */
-
-@media(max-width:768px){
-
-    #gameContainer{
-
-        margin-top:90px;
-
-        padding:14px;
-
-    }
-
-    .startCard{
-
-        padding:24px 18px;
-
-    }
-
-    .missionCard{
-
-        padding:20px;
-
-        border-radius:18px;
-
-    }
-
-    .missionCard h2{
-
-        font-size:24px;
-
-    }
-
-    .choiceBtn{
-
-        font-size:16px;
-
-        padding:16px;
-
-    }
-
-    .playerForm input,
-    select{
-
-        font-size:16px;
-
-    }
-
-    button{
-
-        font-size:16px;
-
-    }
-
-    #hud{
-
-        width:95%;
-
-        padding:10px;
-
-        gap:8px;
-
-    }
-
-    .hudItem{
-
-        font-size:14px;
-
-    }
-
-    .resultCard{
-
-        padding:24px;
-
-    }
-
-}
-
-
-/* ==========================
-   PC
-========================== */
-
-@media(min-width:1200px){
-
-    #gameContainer{
-
-        max-width:900px;
-
-    }
-
-}
-
-
-/* ==========================
-   애니메이션
+   ANIMATION
 ========================== */
 
 @keyframes fadeUp{
@@ -1180,3 +941,358 @@ updateHUD();
     }
 
 }
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes cardUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes starPop{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.5);
+
+    }
+
+    60%{
+
+        transform:scale(1.2);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   STAR RATING COLOR
+========================== */
+
+.star-on{
+
+    color:var(--gold);
+
+}
+
+.star-off{
+
+    color:#d1d5db;
+
+}
+
+/* ==========================
+   GRADE COLOR
+========================== */
+
+.grade-s{
+
+    color:#f59e0b;
+
+    font-weight:800;
+
+}
+
+.grade-a{
+
+    color:#2563eb;
+
+    font-weight:800;
+
+}
+
+.grade-b{
+
+    color:#16a34a;
+
+    font-weight:800;
+
+}
+
+.grade-c{
+
+    color:#f97316;
+
+    font-weight:800;
+
+}
+
+.grade-d{
+
+    color:#dc2626;
+
+    font-weight:800;
+
+}
+
+/* ==========================
+   MODAL OPEN
+========================== */
+
+#idCardModal:not(.hidden),
+#resultModal:not(.hidden){
+
+    animation:fadeUp .35s ease;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .startCard{
+
+        width:92%;
+
+        padding:35px 25px;
+
+    }
+
+    .startCard h1{
+
+        font-size:38px;
+
+    }
+
+    .startCard h2{
+
+        font-size:28px;
+
+    }
+
+    .missionTitle{
+
+        font-size:24px;
+
+    }
+
+    .missionText{
+
+        font-size:16px;
+
+    }
+
+    #hud{
+
+        flex-wrap:wrap;
+
+        gap:18px;
+
+        font-size:15px;
+
+        padding:14px;
+
+    }
+
+    .hudItem{
+
+        font-size:15px;
+
+    }
+
+    .resultCard{
+
+        padding:30px 22px;
+
+    }
+
+    #resultTitle{
+
+        font-size:26px;
+
+    }
+
+    #resultStars{
+
+        font-size:28px;
+
+        letter-spacing:4px;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .genderGroup{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .startCard{
+
+        padding:28px 20px;
+
+    }
+
+    .startCard h1{
+
+        font-size:32px;
+
+    }
+
+    .startCard h2{
+
+        font-size:24px;
+
+    }
+
+    #playerName{
+
+        font-size:15px;
+
+    }
+
+    .readyButton,
+    #startButton{
+
+        font-size:16px;
+
+        padding:15px;
+
+    }
+
+    .missionCard{
+
+        padding:25px;
+
+    }
+
+    .choiceBtn{
+
+        font-size:15px;
+
+        padding:15px;
+
+    }
+
+    .idCard{
+
+        width:90%;
+
+        padding:30px 20px;
+
+    }
+
+}
+
+/* ==========================
+   PROJECTOR MODE
+   (강의장 빔프로젝터 대응)
+========================== */
+
+@media (min-width:1400px){
+
+    body{
+
+        font-size:18px;
+
+    }
+
+    .startCard{
+
+        width:540px;
+
+    }
+
+    .missionTitle{
+
+        font-size:34px;
+
+    }
+
+    .missionText{
+
+        font-size:20px;
+
+    }
+
+    .choiceBtn{
+
+        font-size:18px;
+
+    }
+
+    .hudItem{
+
+        font-size:20px;
+
+    }
+
+}
+
+/* ==========================
+   END
+========================== */
