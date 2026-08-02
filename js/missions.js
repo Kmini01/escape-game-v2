@@ -1,3 +1,4 @@
+
 // ==========================
 // Mission 1
 // 출근부터 위기!
@@ -204,62 +205,113 @@ function selectMission1(answer){
 
 }
 // ==========================
-// Mission 1
-// 출근부터 위기!
+// Mission 2
+// 업무 우선순위 정하기
 // ==========================
 
-function showMission1(){
+function showMission2(){
 
-    document.getElementById("gameContainer").innerHTML = `
+    document.getElementById("gameContainer").innerHTML=`
 
 <div id="missionContainer">
 
     <div class="missionCard">
 
-        ${missionTitle(1,"출근부터 위기!")}
+        ${missionTitle(2,"업무 우선순위 정하기")}
 
         <p>
 
-            🌧️ 아침부터 폭우가 내려
-            지하철이 20분 연착되었습니다.<br><br>
+            📋 팀장님이 동시에 4가지 업무를 요청했습니다.<br><br>
 
-            현재 출근시간까지
-            10분 남았습니다.<br><br>
-
-            가장 적절한 행동은 무엇일까요?
+            가장 효율적인 업무 순서를 선택하세요.
 
         </p>
 
+        <div class="orderCard">
+
+            <h3>📧 긴급 이메일 확인</h3>
+
+            <select id="orderEmail">
+
+                <option value="">순서 선택</option>
+
+                <option value="1">1순위</option>
+
+                <option value="2">2순위</option>
+
+                <option value="3">3순위</option>
+
+                <option value="4">4순위</option>
+
+            </select>
+
+        </div>
+
+        <div class="orderCard">
+
+            <h3>🖨️ 회의자료 출력</h3>
+
+            <select id="orderPrint">
+
+                <option value="">순서 선택</option>
+
+                <option value="1">1순위</option>
+
+                <option value="2">2순위</option>
+
+                <option value="3">3순위</option>
+
+                <option value="4">4순위</option>
+
+            </select>
+
+        </div>
+
+        <div class="orderCard">
+
+            <h3>📞 거래처 전화</h3>
+
+            <select id="orderCall">
+
+                <option value="">순서 선택</option>
+
+                <option value="1">1순위</option>
+
+                <option value="2">2순위</option>
+
+                <option value="3">3순위</option>
+
+                <option value="4">4순위</option>
+
+            </select>
+
+        </div>
+
+        <div class="orderCard">
+
+            <h3>📊 팀장님께 업무보고</h3>
+
+            <select id="orderReport">
+
+                <option value="">순서 선택</option>
+
+                <option value="1">1순위</option>
+
+                <option value="2">2순위</option>
+
+                <option value="3">3순위</option>
+
+                <option value="4">4순위</option>
+
+            </select>
+
+        </div>
+
         <button
             class="choiceBtn"
-            onclick="selectMission1(1)">
+            onclick="checkMission2()">
 
-            📞 팀장님께 먼저 연락하여
-            상황을 공유한다.
-
-        </button>
-
-        <button
-            class="choiceBtn"
-            onclick="selectMission1(2)">
-
-            🚇 지하철을 계속 기다린다.
-
-        </button>
-
-        <button
-            class="choiceBtn"
-            onclick="selectMission1(3)">
-
-            🚖 택시를 타고 출근한다.
-
-        </button>
-
-        <button
-            class="choiceBtn"
-            onclick="selectMission1(4)">
-
-            😴 아무 연락도 하지 않는다.
+            ✅ 업무 순서 제출
 
         </button>
 
@@ -268,144 +320,6 @@ function showMission1(){
 </div>
 
 `;
-
-}
-
-// ==========================
-// Mission1 선택
-// ==========================
-
-function selectMission1(answer){
-
-    removeMission();
-
-    switch(answer){
-
-        case 1:
-
-            finishMission({
-
-                score:10,
-
-                trust:5,
-
-                progress:10,
-
-                time:"09:20",
-
-                skill:"communication",
-
-                skillPoint:2,
-
-                icon:"✅",
-
-                title:"좋은 선택!",
-
-                message:
-
-                "팀장에게 먼저 연락하여<br>" +
-
-                "상황을 공유했습니다.<br><br>" +
-
-                "⭐ 업무점수 +10<br>" +
-
-                "❤️ 신뢰도 +5"
-
-            });
-
-            break;
-
-        case 2:
-
-            finishMission({
-
-                score:5,
-
-                progress:10,
-
-                time:"09:20",
-
-                skill:"communication",
-
-                skillPoint:1,
-
-                icon:"🙂",
-
-                title:"무난한 선택",
-
-                message:
-
-                "기다리는 것도 가능하지만<br>" +
-
-                "먼저 연락했다면 더욱 좋았습니다.<br><br>" +
-
-                "⭐ 업무점수 +5"
-
-            });
-
-            break;
-
-        case 3:
-
-            finishMission({
-
-                score:7,
-
-                progress:10,
-
-                time:"09:10",
-
-                skill:"problem",
-
-                skillPoint:1,
-
-                icon:"🚖",
-
-                title:"빠른 판단",
-
-                message:
-
-                "시간은 지켰지만<br>" +
-
-                "먼저 연락하는 것이 더 좋았습니다.<br><br>" +
-
-                "⭐ 업무점수 +7"
-
-            });
-
-            break;
-
-        case 4:
-
-            finishMission({
-
-                score:-5,
-
-                trust:-10,
-
-                progress:10,
-
-                time:"09:30",
-
-                icon:"❌",
-
-                title:"아쉬운 선택",
-
-                message:
-
-                "연락 없이 지각하여<br>" +
-
-                "신뢰도가 감소했습니다.<br><br>" +
-
-                "⭐ 업무점수 -5<br>" +
-
-                "❤️ 신뢰도 -10"
-
-            });
-
-            break;
-
-    }
 
 }
 // ==========================
