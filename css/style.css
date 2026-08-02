@@ -1292,7 +1292,64 @@ img{
     }
 
 }
+/* ==========================
+   MISSION 2 업무 우선순위
+========================== */
 
+.orderCard{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#f8fafc;
+
+    border:2px solid #e2e8f0;
+
+    border-radius:16px;
+
+    padding:18px 22px;
+
+    margin-bottom:16px;
+
+}
+
+
+.orderCard h3{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+}
+
+
+.orderCard select{
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    border:2px solid #cbd5e1;
+
+    background:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+.orderCard select:focus{
+
+    border-color:#2563eb;
+
+    outline:none;
+
+}
 /* ==========================
    END
 ========================== */
