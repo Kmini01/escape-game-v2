@@ -1358,5 +1358,31 @@ img{
 
 }
 /* ==========================
+   미션 본문 공통
+========================== */
+
+.missionCard p{
+
+    font-size:20px;
+
+    line-height:2.1;
+
+    margin:24px 0 36px;
+
+    color:#334155;
+
+}
+.choiceGroup{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:30px;
+
+}
+/* ==========================
    END
 ========================== */
