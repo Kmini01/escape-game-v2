@@ -1,1 +1,713 @@
+/* ==========================
+   RESET
+========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    font-size:16px;
+
+}
+
+body{
+
+    font-family:"Pretendard",sans-serif;
+
+    background:linear-gradient(180deg,#1e3a8a,#0f172a);
+
+    color:#fff;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==========================
+   공통
+========================== */
+
+.hidden{
+
+    display:none;
+
+}
+
+button{
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    border:none;
+
+}
+
+input{
+
+    font-family:inherit;
+
+    outline:none;
+
+}
+
+
+/* ==========================
+   시작화면
+========================== */
+
+#startScreen{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.startCard{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:#ffffff;
+
+    color:#111827;
+
+    border-radius:28px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+
+}
+
+.missionLabel{
+
+    display:inline-block;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.startCard h1{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
+}
+
+.startCard h2{
+
+    font-size:30px;
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+}
+
+.startCard p{
+
+    line-height:1.7;
+
+    color:#6b7280;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==========================
+   입력
+========================== */
+
+.playerForm{
+
+    text-align:left;
+
+}
+
+.playerForm label{
+
+    display:block;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    margin-top:18px;
+
+}
+
+.playerForm input{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:14px;
+
+    border:2px solid #d1d5db;
+
+    padding:0 16px;
+
+    font-size:17px;
+
+}
+
+.playerForm input:focus{
+
+    border-color:#2563eb;
+
+}
+
+
+/* ==========================
+   성별
+========================== */
+
+.genderGroup{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.genderBtn{
+
+    flex:1;
+
+    height:55px;
+
+    border-radius:14px;
+
+    background:#eef2ff;
+
+    color:#111827;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.genderBtn.active{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+
+/* ==========================
+   버튼
+========================== */
+
+.readyButton,
+#startButton{
+
+    width:100%;
+
+    height:60px;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-top:18px;
+
+}
+
+.readyButton{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+}
+
+#startButton{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+#startButton:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+/* ==========================
+   HUD
+========================== */
+
+#hud{
+
+    position:fixed;
+
+    top:15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(95%,760px);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 18px;
+
+    border-radius:20px;
+
+    background:rgba(15,23,42,.95);
+
+    backdrop-filter:blur(8px);
+
+    z-index:999;
+
+}
+
+.hudItem{
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   게임 영역
+========================== */
+
+#gameContainer{
+
+    width:100%;
+    max-width:900px;
+
+    margin:110px auto 40px;
+
+    padding:20px;
+
+}
+
+
+/* ==========================
+   미션 카드
+========================== */
+
+.missionCard{
+
+    width:100%;
+
+    background:#ffffff;
+
+    color:#111827;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+}
+
+.missionCard h2{
+
+    text-align:center;
+
+    font-size:30px;
+
+    margin:15px 0;
+
+}
+
+.missionCard p{
+
+    text-align:center;
+
+    line-height:1.8;
+
+    color:#4b5563;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ==========================
+   선택 버튼
+========================== */
+
+.choiceBtn{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-top:15px;
+
+    border-radius:16px;
+
+    background:#eef4ff;
+
+    color:#111827;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.choiceBtn:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================
+   순서선택 카드 (Mission2,4)
+========================== */
+
+.orderCard{
+
+    background:#f8fafc;
+
+    border:2px solid #dbeafe;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin:14px 0;
+
+}
+
+.orderCard h3{
+
+    margin-bottom:10px;
+
+    color:#2563eb;
+
+}
+
+.orderCard select{
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:12px;
+
+    border:2px solid #cbd5e1;
+
+    font-size:16px;
+
+    padding:0 12px;
+
+}
+
+
+/* ==========================
+   파일 선택
+========================== */
+
+.fileList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.fileItem{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:2px solid #dbeafe;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.fileItem:hover{
+
+    background:#eff6ff;
+
+}
+
+.fileItem.selected{
+
+    border-color:#2563eb;
+
+    background:#dbeafe;
+
+}
+
+
+/* ==========================
+   결과창
+========================== */
+
+#resultModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:9999;
+
+}
+
+.resultCard{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:white;
+
+    color:#111827;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    text-align:center;
+
+}
+
+#resultIcon{
+
+    font-size:64px;
+
+    margin-bottom:15px;
+
+}
+
+#resultTitle{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+}
+
+#resultText{
+
+    line-height:1.9;
+
+    color:#4b5563;
+
+    margin-bottom:25px;
+
+}
+
+#nextMissionButton{
+
+    width:100%;
+
+    height:58px;
+
+    border-radius:16px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================
+   엔딩 리포트
+========================== */
+
+.reportBox{
+
+    margin-top:25px;
+
+    background:#f8fafc;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.reportRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.reportRow:last-child{
+
+    border-bottom:none;
+
+}
+
+.star{
+
+    color:#fbbf24;
+
+    font-size:20px;
+
+}
+
+
+/* ==========================
+   모바일
+========================== */
+
+@media(max-width:768px){
+
+    .startCard{
+
+        padding:25px 18px;
+
+    }
+
+    .missionCard{
+
+        padding:20px;
+
+        border-radius:18px;
+
+    }
+
+    .missionCard h2{
+
+        font-size:24px;
+
+    }
+
+    .choiceBtn{
+
+        font-size:16px;
+
+        padding:16px;
+
+    }
+
+    #hud{
+
+        width:95%;
+
+        font-size:14px;
+
+        gap:8px;
+
+        padding:10px;
+
+    }
+
+    .hudItem{
+
+        font-size:14px;
+
+    }
+
+    .resultCard{
+
+        padding:25px;
+
+    }
+
+}
+
+
+/* ==========================
+   PC
+========================== */
+
+@media(min-width:1200px){
+
+    #gameContainer{
+
+        max-width:900px;
+
+    }
+
+}
