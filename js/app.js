@@ -17,15 +17,16 @@ let isReady = false;
 
 function checkStartReady(){
 
-    const name = document
-        .getElementById("playerName")
-        .value
-        .trim();
+   const name = document
+    .getElementById("playerName")
+    .value
+    .trim();
 
-    document
-        .getElementById("startButton")
-        .disabled = !(name && gender && isReady);
+playerName = name;
 
+document
+    .getElementById("startButton")
+    .disabled = !(name && gender && isReady);
 }
 // ==========================
 // 게임 데이터
@@ -700,4 +701,3 @@ updateHUD();
 
     readyBtn.classList.remove("complete");
 
-}
