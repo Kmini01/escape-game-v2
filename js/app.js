@@ -329,6 +329,8 @@ document.getElementById("resultStars");
 
 if(stars){
 
+    stars.classList.remove("hidden");
+
     stars.textContent =
     makeStars(game.score);
 
@@ -346,6 +348,14 @@ function closeResult(){
 
     document.getElementById("resultModal").classList.add("hidden");
 
+    const stars =
+document.getElementById("resultStars");
+
+if(stars){
+
+    stars.classList.add("hidden");
+
+}
 }
 
 // ==========================
@@ -668,6 +678,7 @@ document.addEventListener("keydown",(e)=>{
 // ==========================
 
 updateHUD();
+
 document
 .getElementById("startButton")
 .disabled = true;
@@ -691,3 +702,4 @@ readyBtn.innerHTML =
 "☐ 출근 준비 완료";
 
 readyBtn.classList.remove("complete");
+}
