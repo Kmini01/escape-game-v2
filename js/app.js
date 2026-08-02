@@ -11,7 +11,22 @@
 let playerName = "";
 let gender = "";
 let isReady = false;
+// ==========================
+// 게임 시작 가능 여부
+// ==========================
 
+function checkStartReady(){
+
+    const name = document
+        .getElementById("playerName")
+        .value
+        .trim();
+
+    document
+        .getElementById("startButton")
+        .disabled = !(name && gender && isReady);
+
+}
 // ==========================
 // 게임 데이터
 // ==========================
@@ -40,9 +55,34 @@ const game = {
 
 function makeStars(score){
 
-    score = Math.max(0, Math.min(5, score));
+    let star = 1;
 
-    return "★".repeat(score) + "☆".repeat(5-score);
+    if(score >= 85){
+
+        star = 5;
+
+    }
+
+    else if(score >= 70){
+
+        star = 4;
+
+    }
+
+    else if(score >= 55){
+
+        star = 3;
+
+    }
+
+    else if(score >= 40){
+
+        star = 2;
+
+    }
+
+    return "★".repeat(star)
+    +"☆".repeat(5-star);
 
 }
 
@@ -79,11 +119,13 @@ document.querySelectorAll(".genderBtn").forEach(btn=>{
         btn.classList.add("active");
 
         gender = btn.dataset.gender;
-
+checkStartReady();
     });
 
 });
-
+document
+.getElementById("playerName")
+.addEventListener("input",checkStartReady);
 // ==========================
 // 출근 준비
 // ==========================
@@ -97,25 +139,20 @@ document
     const btn =
     document.getElementById("idCardButton");
 
-    if(isReady){
+   btn.innerHTML =
 
-        btn.innerHTML = "✅ 출근 준비 완료";
+isReady
+?
+"✅ 출근 준비 완료"
+:
+"☐ 출근 준비 완료";
 
-        btn.style.background = "#16a34a";
+btn.classList.toggle(
+"complete",
+isReady
+);
 
-        btn.style.color = "#fff";
-
-    }
-
-    else{
-
-        btn.innerHTML = "☐ 출근 준비 완료";
-
-        btn.style.background = "#f3f4f6";
-
-        btn.style.color = "#111827";
-
-    }
+checkStartReady();
 
 });
 
@@ -183,10 +220,10 @@ document
 
 function startGame(){
 
-    document
-    .getElementById("startScreen")
-    .style.display = "none";
-
+   document
+.getElementById("startScreen")
+.classList.add("hidden");
+    
     document
     .getElementById("hud")
     .classList.remove("hidden");
@@ -287,6 +324,15 @@ function showResult(icon,title,text){
     document.getElementById("resultTitle").textContent = title;
 
     document.getElementById("resultText").innerHTML = text;
+    const stars =
+document.getElementById("resultStars");
+
+if(stars){
+
+    stars.textContent =
+    makeStars(game.score);
+
+}
 
     document.getElementById("resultModal").classList.remove("hidden");
 
@@ -622,3 +668,26 @@ document.addEventListener("keydown",(e)=>{
 // ==========================
 
 updateHUD();
+document
+.getElementById("startButton")
+.disabled = true;
+
+document
+.getElementById("playerName")
+.value = "";
+
+gender = "";
+
+isReady = false;
+
+document
+.querySelectorAll(".genderBtn")
+.forEach(btn=>btn.classList.remove("active"));
+
+const readyBtn =
+document.getElementById("idCardButton");
+
+readyBtn.innerHTML =
+"☐ 출근 준비 완료";
+
+readyBtn.classList.remove("complete");
