@@ -988,19 +988,28 @@ function checkMission4(){
 // 업무보고서 작성
 // ==========================
 
-let selectedFiles=[];
+
+let selectedFiles = [];
+
+
+// ==========================
+// Mission5 화면
+// ==========================
 
 function showMission5(){
 
-    selectedFiles=[];
+    selectedFiles = [];
 
-    document.getElementById("gameContainer").innerHTML=`
+
+    document.getElementById("gameContainer").innerHTML = `
 
 <div id="missionContainer">
 
 <div class="missionCard">
 
+
 ${missionTitle(5,"업무보고서 작성")}
+
 
 <p>
 
@@ -1012,41 +1021,74 @@ ${missionTitle(5,"업무보고서 작성")}
 
 </p>
 
+
+
 <div class="fileList">
+
 
 <div class="choiceGroup">
 
+
 <button class="choiceBtn"
-onclick="selectMission5(this, true)">
+onclick="selectMission5(this,true)">
+
 📊 2026 상반기 ESG 실적.xlsx
+
 </button>
 
+
+
 <button class="choiceBtn"
-onclick="selectMission5(this, false)">
+onclick="selectMission5(this,false)">
+
 📄 2025 ESG 보고서.docx
+
 </button>
 
+
+
 <button class="choiceBtn"
-onclick="selectMission5(this, true)">
+onclick="selectMission5(this,true)">
+
 📊 2025 상반기 ESG 실적.xlsx
+
 </button>
 
+
+
 <button class="choiceBtn"
-onclick="selectMission5(this, false)">
+onclick="selectMission5(this,false)">
+
 📝 ESG 회의 메모.txt
+
 </button>
 
+
+
 <button class="choiceBtn"
-onclick="selectMission5(this, false)">
+onclick="selectMission5(this,false)">
+
 🖼 회사 로고.png
+
 </button>
+
+
 
 </div>
 
+
+
 <button class="choiceBtn"
 onclick="checkMission5()">
+
 ✅ 자료 선택 완료
+
 </button>
+
+
+
+</div>
+
 
 </div>
 
@@ -1056,119 +1098,172 @@ onclick="checkMission5()">
 
 }
 
+
+
 // ==========================
-// 파일 선택
+// 자료 선택
 // ==========================
 
-function selectFile(element,value){
+function selectMission5(button, correct){
 
-    if(element.classList.contains("selected")){
 
-        element.classList.remove("selected");
+    // 선택 취소
 
-        selectedFiles=
+    if(button.classList.contains("active")){
 
-        selectedFiles.filter(v=>v!==value);
+
+        button.classList.remove("active");
+
+
+        selectedFiles =
+        selectedFiles.filter(
+            file => file.button !== button
+        );
+
 
         return;
 
     }
 
-    if(selectedFiles.length>=2){
 
-        alert("파일은 2개만 선택할 수 있습니다.");
+
+    // 2개 제한
+
+    if(selectedFiles.length >= 2){
+
+
+        alert("자료는 2개까지 선택할 수 있습니다.");
+
 
         return;
 
     }
 
-    element.classList.add("selected");
 
-    selectedFiles.push(value);
+
+    button.classList.add("active");
+
+
+
+    selectedFiles.push({
+
+        button:button,
+
+        correct:correct
+
+    });
+
 
 }
 
+
+
 // ==========================
-// Mission5 채점
+// 제출 확인
 // ==========================
 
 function checkMission5(){
 
-    if(selectedFiles.length!==2){
 
-        alert("파일을 2개 선택해주세요.");
+    if(selectedFiles.length !== 2){
+
+
+        alert("필요한 자료 2개를 선택해주세요.");
+
 
         return;
 
     }
 
-    removeMission();
 
-    const correct=
 
-    selectedFiles.includes("2026") &&
+    const success =
 
-    selectedFiles.includes("report");
+    selectedFiles.every(
 
-    if(correct){
+        file => file.correct === true
+
+    );
+
+
+
+    if(success){
+
 
         finishMission({
 
-            score:15,
 
-            trust:5,
+            score:10,
 
-            progress:10,
 
-            time:"15:10",
+            progress:20,
+
+
+            time:"15:00",
+
 
             skill:"report",
 
-            skillPoint:2,
 
-            icon:"📊",
+            skillPoint:1,
 
-            title:"자료 선택 성공!",
+
+            icon:"📄",
+
+
+            title:"보고서 작성 완료!",
+
 
             message:
 
-            "최신 실적과 기존 보고서를 함께 활용했습니다.<br><br>"+
+            "필요한 자료를 정확하게 선택했습니다.<br><br>" +
 
-            "⭐ 업무점수 +15<br>"+
+            "효율적인 업무보고 준비를 완료했습니다."
 
-            "❤️ 신뢰도 +5"
 
         });
+
+
 
     }
 
     else{
 
+
         finishMission({
+
 
             score:-5,
 
-            trust:-5,
 
-            progress:10,
+            progress:20,
 
-            time:"15:10",
 
-            icon:"❌",
+            time:"15:00",
 
-            title:"자료 선택 실패",
+
+            skill:"report",
+
+
+            skillPoint:0,
+
+
+            icon:"⚠️",
+
+
+            title:"자료 선택 오류",
+
 
             message:
 
-            "최신 데이터와 기존 보고서를 함께 확인해야 합니다.<br><br>"+
+            "보고서 작성에 필요한 자료를 다시 확인해주세요."
 
-            "⭐ 업무점수 -5<br>"+
-
-            "❤️ 신뢰도 -5"
 
         });
 
+
     }
+
 
 }
 // ==========================
@@ -1815,102 +1910,5 @@ function selectMission8(answer){
         showEnding();
 
     };
-
-}
-// ==========================
-// Mission 5 선택 처리
-// ==========================
-
-function selectMission5(btn, correct){
-
-    btn.classList.toggle("active");
-
-    const file = {
-        correct: correct,
-        button: btn
-    };
-
-    if(btn.classList.contains("active")){
-
-        selectedFiles.push(file);
-
-    }
-    else{
-
-        selectedFiles =
-        selectedFiles.filter(item=>item.button!==btn);
-
-    }
-
-}
-
-
-// ==========================
-// Mission 5 결과 확인
-// ==========================
-
-function checkMission5(){
-
-    if(selectedFiles.length !== 2){
-
-        alert("자료 2개를 선택해주세요.");
-
-        return;
-
-    }
-
-
-    const correctCount =
-    selectedFiles.filter(file=>file.correct).length;
-
-
-    if(correctCount === 2){
-
-        finishMission({
-
-            score:15,
-
-            progress:10,
-
-            time:"15:00",
-
-            skill:"report",
-
-            skillPoint:1,
-
-            icon:"✅",
-
-            title:"보고서 작성 완료",
-
-            message:
-            "필요한 자료를 정확하게 선택했습니다.<br>" +
-            "효율적인 업무보고 역량을 발휘했습니다."
-
-        });
-
-    }
-
-    else{
-
-        finishMission({
-
-            score:-5,
-
-            trust:-5,
-
-            progress:10,
-
-            time:"15:00",
-
-            icon:"❌",
-
-            title:"자료 선택 오류",
-
-            message:
-            "보고서 목적에 맞는 자료를 다시 확인하세요."
-
-        });
-
-    }
 
 }
