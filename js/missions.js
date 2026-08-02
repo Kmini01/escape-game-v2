@@ -1817,3 +1817,100 @@ function selectMission8(answer){
     };
 
 }
+// ==========================
+// Mission 5 선택 처리
+// ==========================
+
+function selectMission5(btn, correct){
+
+    btn.classList.toggle("active");
+
+    const file = {
+        correct: correct,
+        button: btn
+    };
+
+    if(btn.classList.contains("active")){
+
+        selectedFiles.push(file);
+
+    }
+    else{
+
+        selectedFiles =
+        selectedFiles.filter(item=>item.button!==btn);
+
+    }
+
+}
+
+
+// ==========================
+// Mission 5 결과 확인
+// ==========================
+
+function checkMission5(){
+
+    if(selectedFiles.length !== 2){
+
+        alert("자료 2개를 선택해주세요.");
+
+        return;
+
+    }
+
+
+    const correctCount =
+    selectedFiles.filter(file=>file.correct).length;
+
+
+    if(correctCount === 2){
+
+        finishMission({
+
+            score:15,
+
+            progress:10,
+
+            time:"15:00",
+
+            skill:"report",
+
+            skillPoint:1,
+
+            icon:"✅",
+
+            title:"보고서 작성 완료",
+
+            message:
+            "필요한 자료를 정확하게 선택했습니다.<br>" +
+            "효율적인 업무보고 역량을 발휘했습니다."
+
+        });
+
+    }
+
+    else{
+
+        finishMission({
+
+            score:-5,
+
+            trust:-5,
+
+            progress:10,
+
+            time:"15:00",
+
+            icon:"❌",
+
+            title:"자료 선택 오류",
+
+            message:
+            "보고서 목적에 맞는 자료를 다시 확인하세요."
+
+        });
+
+    }
+
+}
