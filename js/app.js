@@ -1,3 +1,11 @@
+import {
+    db,
+    collection,
+    addDoc,
+    getDocs,
+    serverTimestamp
+} from "./firebase.js";
+
 // ==========================
 // MISSION : 칼퇴 대작전 Ver2
 // app.js
