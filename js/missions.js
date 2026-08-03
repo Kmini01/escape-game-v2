@@ -650,7 +650,6 @@ function selectMission3(answer){
 // ==========================
 // Mission 4
 // 회의 일정 재조정
-// (앞부분)
 // ==========================
 
 function showMission4(){
@@ -665,36 +664,38 @@ function showMission4(){
 
         <p>
 
-            📢 팀장님 공지<br><br>
+🕑 오전 11시 예정이었던 회의가
+<b>오후 2시</b>로 변경되었습니다.<br><br>
 
-            오후 <b>2시 회의</b>로 변경되었습니다.<br><br>
+회의 준비 시간이 3시간 더 확보되었습니다.<br><br>
 
-            오전 시간이 생겼습니다.<br>
+팀장님이 말씀하셨습니다.<br><br>
 
-            가장 효율적인 업무 순서를 선택하세요.
+<b>
+"남은 시간을 활용해서
+업무를 마무리하고
+2시 회의까지 준비를 완료해주세요."
+</b><br><br>
+
+업무의 중요도와
+선후관계를 고려하여
+가장 효율적인 순서를 선택하세요.
 
         </p>
 
         <div class="orderCard">
 
             <h3>
-
-                📧 이메일 확인 (15분)
-
+                📧 긴급 이메일 확인 (15분)
             </h3>
 
             <select id="m4Email">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
-
                 <option value="5">5순위</option>
 
             </select>
@@ -704,23 +705,16 @@ function showMission4(){
         <div class="orderCard">
 
             <h3>
-
                 📞 거래처 전화 (20분)
-
             </h3>
 
             <select id="m4Call">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
-
                 <option value="5">5순위</option>
 
             </select>
@@ -730,23 +724,16 @@ function showMission4(){
         <div class="orderCard">
 
             <h3>
-
                 📊 업무보고 작성 (60분)
-
             </h3>
 
             <select id="m4Report">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
-
                 <option value="5">5순위</option>
 
             </select>
@@ -756,23 +743,16 @@ function showMission4(){
         <div class="orderCard">
 
             <h3>
-
                 📝 회의자료 보완 (40분)
-
             </h3>
 
             <select id="m4Edit">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
-
                 <option value="5">5순위</option>
 
             </select>
@@ -782,23 +762,16 @@ function showMission4(){
         <div class="orderCard">
 
             <h3>
-
                 🖨️ 회의자료 출력 (20분)
-
             </h3>
 
             <select id="m4Print">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
-
                 <option value="5">5순위</option>
 
             </select>
@@ -806,9 +779,7 @@ function showMission4(){
         </div>
 
         <button
-
             class="choiceBtn"
-
             onclick="checkMission4()">
 
             ✅ 일정 확인
