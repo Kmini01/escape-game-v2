@@ -220,30 +220,31 @@ function showMission2(){
         ${missionTitle(2,"업무 우선순위 정하기")}
 
         <p>
-        
-📋 출근한 지 30분.
 
-팀장님이 동시에 여러 업무를 요청했습니다.
+        📋 출근한 지 30분입니다.<br><br>
 
-업무의 긴급성과 중요도를 고려하여
-가장 적절한 순서를 선택하세요.
-           
+        🕚 <b>오늘 오전 11:00 팀 회의</b>가 예정되어 있습니다.<br><br>
+
+        회의자료는 아직 출력되지 않았으며,
+        회의 전에 준비 상황을 팀장님께 보고해야 합니다.<br><br>
+
+        팀장님이 동시에 아래 업무를 요청했습니다.<br><br>
+
+        <b>회의 시간과 업무의 긴급성을 고려하여
+        가장 적절한 순서를 선택하세요.</b>
+
         </p>
 
         <div class="orderCard">
 
-            <h3>📧 긴급 이메일 확인</h3>
+            <h3>📧 긴급 이메일 확인 (5분)</h3>
 
             <select id="orderEmail">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
 
             </select>
@@ -252,18 +253,14 @@ function showMission2(){
 
         <div class="orderCard">
 
-            <h3>🖨️ 회의자료 출력</h3>
+            <h3>🖨️ 회의자료 출력 (15분)</h3>
 
             <select id="orderPrint">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
-
                 <option value="4">4순위</option>
 
             </select>
@@ -272,38 +269,30 @@ function showMission2(){
 
         <div class="orderCard">
 
-            <h3>📞 거래처 전화</h3>
-
-            <select id="orderCall">
-
-                <option value="">순서 선택</option>
-
-                <option value="1">1순위</option>
-
-                <option value="2">2순위</option>
-
-                <option value="3">3순위</option>
-
-                <option value="4">4순위</option>
-
-            </select>
-
-        </div>
-
-        <div class="orderCard">
-
-            <h3>📊 팀장님께 업무보고</h3>
+            <h3>📊 팀장님께 준비 완료 보고 (5분)</h3>
 
             <select id="orderReport">
 
                 <option value="">순서 선택</option>
-
                 <option value="1">1순위</option>
-
                 <option value="2">2순위</option>
-
                 <option value="3">3순위</option>
+                <option value="4">4순위</option>
 
+            </select>
+
+        </div>
+
+        <div class="orderCard">
+
+            <h3>📞 거래처 전화 (20분)</h3>
+
+            <select id="orderCall">
+
+                <option value="">순서 선택</option>
+                <option value="1">1순위</option>
+                <option value="2">2순위</option>
+                <option value="3">3순위</option>
                 <option value="4">4순위</option>
 
             </select>
@@ -325,6 +314,7 @@ function showMission2(){
 `;
 
 }
+
 // ==========================
 // Mission 2 채점
 // ==========================
@@ -337,21 +327,19 @@ function checkMission2(){
     const print =
     document.getElementById("orderPrint").value;
 
-    const call =
-    document.getElementById("orderCall").value;
-
     const report =
     document.getElementById("orderReport").value;
 
-    // --------------------------
+    const call =
+    document.getElementById("orderCall").value;
+
     // 모두 선택했는지 확인
-    // --------------------------
 
     if(
         email==="" ||
         print==="" ||
-        call==="" ||
-        report===""){
+        report==="" ||
+        call===""){
 
         alert("모든 업무의 순서를 선택해주세요.");
 
@@ -359,11 +347,9 @@ function checkMission2(){
 
     }
 
-    // --------------------------
     // 중복 선택 확인
-    // --------------------------
 
-    const orders=[email,print,call,report];
+    const orders=[email,print,report,call];
 
     const unique=new Set(orders);
 
@@ -377,17 +363,15 @@ function checkMission2(){
 
     removeMission();
 
-    // --------------------------
     // 정답
-    // 이메일 → 출력 → 전화 → 보고
-    // --------------------------
+    // 이메일 → 회의자료 출력 → 준비 완료 보고 → 거래처 전화
 
     const correct=
 
         email==="1" &&
         print==="2" &&
-        call==="3" &&
-        report==="4";
+        report==="3" &&
+        call==="4";
 
     if(correct){
 
@@ -407,12 +391,13 @@ function checkMission2(){
 
             icon:"📅",
 
-            title:"일정 계획 완료!",
+            title:"우선순위 설정 성공!",
 
             message:
 
-            "업무의 우선순위를 고려하여<br>" +
-            "효율적으로 일정을 계획했습니다.<br><br>" +
+            "회의 시간을 고려하여<br>" +
+
+            "업무를 효율적으로 우선순위에 따라 처리했습니다.<br><br>" +
 
             "⭐ 업무점수 +15<br>" +
 
@@ -436,11 +421,13 @@ function checkMission2(){
 
             icon:"❌",
 
-            title:"일정 계획 실패",
+            title:"우선순위 설정 실패",
 
             message:
 
-            "업무 우선순위를 다시 생각해보세요.<br><br>" +
+            "회의 시간과 업무의 긴급성을<br>" +
+
+            "함께 고려해보세요.<br><br>" +
 
             "⭐ 업무점수 -5<br>" +
 
