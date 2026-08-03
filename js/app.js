@@ -699,3 +699,46 @@ function resetStartScreen(){
     readyBtn.classList.remove("complete");
 
 }
+// ==========================
+// Firebase 저장
+// ==========================
+
+async function saveGameResult(){
+
+    try{
+
+        await addDoc(
+
+            collection(db,"players"),
+
+            {
+
+                name:player.name,
+
+                gender:player.gender,
+
+                score:player.score,
+
+                trust:player.trust,
+
+                progress:player.progress,
+
+                playTime:player.time,
+
+                createdAt:serverTimestamp()
+
+            }
+
+        );
+
+        console.log("Firebase 저장 완료");
+
+    }
+
+    catch(e){
+
+        console.error(e);
+
+    }
+
+}
