@@ -377,45 +377,57 @@ document
 
             break;
 
-        case 3:
+       case 3:
 
-            showMission3();
+    showMission3Brief();
 
-            break;
+              break;
 
-        case 4:
+             case 4:
 
-            showMission4();
+            showMission4Brief();
 
             break;
 
         case 5:
 
-            showMission5();
+            showMission5Brief();
 
             break;
 
         case 6:
 
-            showMission6();
+            showMission6Brief();
 
             break;
 
         case 7:
 
-            showMission7();
+            showMission7Brief();
 
             break;
 
         case 8:
 
-            showMission8();
+            showMission8Brief();
 
             break;
 
-        default:
+        case 9:
 
-            showEnding();
+            showMission9Brief();
+
+            break;
+
+        case 10:
+
+            showMission10Brief();
+
+            break;
+
+        case 11:
+
+            showMission11Brief();
 
             break;
 
