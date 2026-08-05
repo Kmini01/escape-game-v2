@@ -994,19 +994,15 @@ onclick="selectMission5(this,true)">
 
 </button>
 
-
-
 <button class="choiceBtn"
-onclick="selectMission5(this,false)">
+onclick="selectMission5(this,true)">
 
 📄 2025 ESG 보고서.docx
 
 </button>
 
-
-
 <button class="choiceBtn"
-onclick="selectMission5(this,true)">
+onclick="selectMission5(this,false)">
 
 📊 2025 상반기 ESG 실적.xlsx
 
