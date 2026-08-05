@@ -3118,6 +3118,60 @@ function selectMission10(answer){
 
 }
 // ==========================
+// Mission 11 브리핑
+// ==========================
+
+function showMission11Brief(){
+
+    document.getElementById("gameContainer").innerHTML = `
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(11,"퇴근하기")}
+
+        <p>
+
+🕕 <b>현재 시간 : 18:00</b><br><br>
+
+오늘의 모든 업무가 끝났습니다.<br><br>
+
+마지막까지 좋은 인상을 남기는 것도
+직장인의 중요한 역량입니다.
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+가장 적절한<br>
+
+퇴근 매너를 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission11()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+// ==========================
 // Mission 11
 // 퇴근하기
 // ==========================
