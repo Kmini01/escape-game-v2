@@ -129,11 +129,11 @@ function showEnding(){
     // 최종 등급
     // ==========================
 
-    if(game.score>=85){
+   if(game.score>=85){
 
-        icon="🏆";
-        title="칼퇴 성공!";
-        grade="S";
+    icon="🏆";
+    title="칼퇴 성공!";
+    grade="S · 에이스 신입";
         resultColor="#16a34a";
 
         message=
@@ -146,8 +146,8 @@ function showEnding(){
     else if(game.score>=70){
 
         icon="😊";
-        title="정상 퇴근";
-        grade="A";
+       title="정상 퇴근";
+       grade="A · 믿음직한 신입";
         resultColor="#2563eb";
 
         message=
@@ -160,7 +160,7 @@ function showEnding(){
 
         icon="⏰";
         title="야근 1시간";
-        grade="B";
+        grade="B · 성장하는 신입";
         resultColor="#f59e0b";
 
         message=
@@ -173,7 +173,7 @@ function showEnding(){
 
         icon="📄";
         title="야근 2시간";
-        grade="C";
+        grade="C · 경험이 필요한 신입";
         resultColor="#fb923c";
 
         message=
@@ -185,8 +185,8 @@ function showEnding(){
     else{
 
         icon="🌙";
-        title="야근 확정";
-        grade="D";
+       title="야근 확정";
+       grade="D · 다시 도전!";
         resultColor="#dc2626";
 
         message=
@@ -274,7 +274,31 @@ function showEnding(){
             break;
 
     }
+let badge="";
 
+switch(bestSkill.name){
+
+   case "일정관리":
+    badge="📅 일정 마스터";
+    break;
+
+case "문제해결":
+    badge="🛠 해결사";
+    break;
+
+case "협업·소통":
+    badge="🤝 협업왕";
+    break;
+
+case "업무보고":
+    badge="📋 보고왕";
+    break;
+
+case "비즈니스매너":
+    badge="💼 매너왕";
+    break;
+
+}
     // ==========================
     // 출력
     // ==========================
@@ -377,15 +401,32 @@ ${message}
 
 <h2>🏆 BEST 역량</h2>
 
-<p>
+<p style="font-size:24px;font-weight:700;">
 
-${bestSkill.name}
+🥇 ${bestSkill.name}
 
-<br><br>
+</p>
+
+<p style="font-size:20px;margin:12px 0;">
 
 ${makeSkillStars(bestSkill.score)}
 
 </p>
+
+<div style="
+background:#eff6ff;
+border:2px solid #bfdbfe;
+border-radius:12px;
+padding:14px;
+margin-top:15px;
+font-size:18px;
+font-weight:700;
+color:#2563eb;
+">
+
+🏅 ${badge}
+
+</div>
 
 </div>
 
