@@ -705,28 +705,40 @@ async function saveGameResult(){
 
     try{
 
-       await addDoc(
+        await addDoc(
 
-    collection(db,"players"),
+            collection(db,"players"),
 
-    {
+            {
 
-        name: playerName,
-        gender: gender,
+                name: playerName,
+                gender: gender,
 
-        score: game.score,
-        trust: game.trust,
-        progress: game.progress,
-        playTime: game.time,
+                score: game.score,
+                trust: game.trust,
+                progress: game.progress,
+                playTime: game.time,
 
-        schedule: game.schedule,
-        problem: game.problem,
-        communication: game.communication,
-        report: game.report,
-        manner: game.manner,
+                schedule: game.schedule,
+                problem: game.problem,
+                communication: game.communication,
+                report: game.report,
+                manner: game.manner,
 
-        createdAt: serverTimestamp()
+                createdAt: serverTimestamp()
+
+            }
+
+        );
+
+        console.log("Firebase 저장 완료");
 
     }
 
-);
+    catch(e){
+
+        console.error(e);
+
+    }
+
+}
