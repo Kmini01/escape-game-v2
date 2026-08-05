@@ -119,12 +119,13 @@ function makeSkillStars(score){
 }
 function showEnding(){
 
+    saveGameResult(); 
+
     let title="";
     let icon="";
     let message="";
     let resultColor="";
     let grade="";
-
     // ==========================
     // 최종 등급
     // ==========================
