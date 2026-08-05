@@ -398,7 +398,7 @@ ${message}
 
 </div>
 
-<div class="reportBox">
+<div class="reportBox reportCenter">
 
 <h2>🏆 BEST 역량</h2>
 
@@ -432,7 +432,7 @@ color:#2563eb;
 
 </div>
 
-<div class="reportBox">
+<div class="reportBox reportCenter">
 
 <h2>📈 성장 포인트</h2>
 
@@ -448,7 +448,7 @@ ${weakSkill.name}
 
 </div>
 
-<div class="reportBox">
+<div class="reportBox reportCenter">
 
 <h2>👔 당신의 업무 스타일</h2>
 
