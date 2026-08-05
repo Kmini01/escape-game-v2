@@ -57,7 +57,7 @@ function showSummary(){
 
         </div>
 
-        <p style="text-align:left; line-height:2.1;">
+        <p style="text-align:left; line-height:2.2;">
 
 ✅ <b>1. 업무는 우선순위를 고려하여 계획하기</b><br>
 → 긴급성과 중요도를 기준으로 중요한 업무부터 처리합니다.<br><br>
@@ -82,7 +82,7 @@ border-radius:14px;
 padding:18px;
 margin-top:25px;
 text-align:center;
-line-height:1.8;
+line-height:2.0;
 ">
 
 👏 <b>${playerName}님, 오늘 하루 수고 많으셨습니다.</b><br><br>
@@ -405,6 +405,7 @@ ${message}
 <p style="font-size:24px;font-weight:700;">
 
 🥇 ${bestSkill.name}
+
 
 </p>
 
