@@ -66,17 +66,13 @@ function showMission1(){
 
         ${missionTitle(1,"출근부터 위기!")}
 
-        <p>
+       <p>
 
-            🌧️ 아침부터 폭우가 내려
-            지하철이 20분 연착되었습니다.<br><br>
+지각이 예상되는 상황입니다.
 
-            현재 출근시간까지
-            10분 남았습니다.<br><br>
+가장 적절한 행동을 선택하세요.
 
-            가장 적절한 행동은 무엇일까요?
-
-        </p>
+</p>
 
         <button
             class="choiceBtn"
@@ -333,19 +329,11 @@ function showMission2(){
 
         <p>
 
-        📋 출근한 지 30분입니다.<br><br>
+오전 11시 회의를 고려하여
 
-        🕚 <b>오늘 오전 11:00 팀 회의</b>가 예정되어 있습니다.<br><br>
+업무 우선순위를 배치하세요.
 
-        회의자료는 아직 출력되지 않았으며,
-        회의 전에 준비 상황을 팀장님께 보고해야 합니다.<br><br>
-
-        팀장님이 동시에 아래 업무를 요청했습니다.<br><br>
-
-        <b>회의 시간과 업무의 긴급성을 고려하여
-        가장 적절한 순서를 선택하세요.</b>
-
-        </p>
+</p>
 
         <div class="orderCard">
 
@@ -565,6 +553,61 @@ function checkMission2(){
 
 }
 // ==========================
+// Mission 3 브리핑
+// ==========================
+
+function showMission3Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(3,"프린터 고장")}
+
+        <p>
+
+🕙 <b>현재 시간 : 10:10</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+"11시 회의에서 사용할 자료를 출력해 주세요."<br><br>
+
+프린터를 켰지만 갑자기 출력이 되지 않습니다.<br><br>
+
+⏳ <b>회의까지 약 50분 남았습니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+문제를 해결하기 위한<br>
+가장 적절한 행동을 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission3()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+// ==========================
 // Mission 3
 // 프린터 고장!
 // ==========================
@@ -579,18 +622,13 @@ function showMission3(){
 
         ${missionTitle(3,"프린터가 고장났다!")}
 
-        <p>
+       <p>
 
-            🖨️ 회의자료를 출력하려는데
-            프린터 오류가 발생했습니다.<br><br>
+프린터가 고장났습니다.
 
-            회의까지
-            <b>20분</b>
-            남았습니다.<br><br>
+어떻게 대응하시겠습니까?
 
-            가장 적절한 행동은 무엇일까요?
-
-        </p>
+</p>
 
         <button
             class="choiceBtn"
