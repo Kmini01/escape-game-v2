@@ -2894,8 +2894,7 @@ function showMission10(){
 
 <div class="missionCard">
 
-${missionTitle10,"퇴근 전 업무보고")}
-
+${missionTitle(10,"퇴근 전 업무보고")}
 <p>
 
 🕔 오후 5시 40분<br><br>
@@ -2910,7 +2909,7 @@ ${missionTitle10,"퇴근 전 업무보고")}
 
 <button
 class="choiceBtn"
-onclick="selectMission7(1)">
+onclick="selectMission10(1)">
 
 📋 오늘 일정을 계획하고,<br>
 회의자료를 보완했으며,<br>
@@ -2921,7 +2920,7 @@ onclick="selectMission7(1)">
 
 <button
 class="choiceBtn"
-onclick="selectMission7(2)">
+onclick="selectMission10(2)">
 
 😊 오늘 업무 모두 완료했습니다.
 
@@ -2929,7 +2928,7 @@ onclick="selectMission7(2)">
 
 <button
 class="choiceBtn"
-onclick="selectMission7(3)">
+onclick="selectMission10(3)">
 
 📄 회의하고 자료 만들었습니다.
 
@@ -2937,7 +2936,7 @@ onclick="selectMission7(3)">
 
 <button
 class="choiceBtn"
-onclick="selectMission7(4)">
+onclick="selectMission10(4)">
 
 🚶 보고하지 않고 퇴근한다.
 
