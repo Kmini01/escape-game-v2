@@ -306,7 +306,7 @@ function showCountdown(){
 
             document.getElementById("countdownScreen").remove();
 
-            showMission1();
+            showMission1Brief();
 
         }
 
