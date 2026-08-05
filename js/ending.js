@@ -18,7 +18,9 @@ function showSummary(){
 
         <h2 class="missionTitle">
 
-            🎯 오늘 배운 직장생활 핵심 5가지
+            🎉 첫 출근을 성공적으로 마쳤습니다!
+
+오늘의 성장 포인트
 
         </h2>
 
@@ -31,9 +33,11 @@ function showSummary(){
             text-align:center;
         ">
 
-            <h3 style="margin-bottom:12px;">
-                📊 오늘의 결과
-            </h3>
+           <h3 style="margin-bottom:12px;">
+
+🎉 ${playerName}님의 오늘 결과
+
+</h3>
 
             <p style="font-size:22px;font-weight:700;">
 
@@ -72,28 +76,27 @@ function showSummary(){
 
         </p>
 
-        <div style="
-            background:#f8fafc;
-            border-radius:14px;
-            padding:18px;
-            margin-top:25px;
-            text-align:center;
-            line-height:1.8;
-        ">
+       <div style="
+background:#f8fafc;
+border-radius:14px;
+padding:18px;
+margin-top:25px;
+text-align:center;
+line-height:1.8;
+">
 
-            💡 <b>오늘의 한마디</b><br>
+👏 <b>${playerName}님, 오늘 하루 수고 많으셨습니다.</b><br><br>
 
-            작은 습관이 신뢰를 만들고,<br>
+오늘 경험한 작은 선택들이
+좋은 직장인의 첫걸음이 됩니다.
 
-            신뢰가 좋은 직장인을 만듭니다.
-
-        </div>
+</div>
 
         <button
             class="choiceBtn"
             onclick="showEnding()">
 
-            🏆 최종 결과 보기
+         🏆 최종 업무 평가 보기
 
         </button>
 
