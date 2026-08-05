@@ -371,9 +371,9 @@ document
 
     switch(currentMission){
 
-        case 2:
+       case 2:
 
-            showMission2();
+    showMission2Brief();
 
             break;
 
