@@ -1,4 +1,109 @@
+// ==========================
+// 오늘 배운 핵심 정리
+// ==========================
 
+function showSummary(){
+
+    document.getElementById("gameContainer").innerHTML = `
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        <div class="missionNumber">
+
+            TODAY'S CHECK
+
+        </div>
+
+        <h2 class="missionTitle">
+
+            🎯 오늘 배운 직장생활 핵심 5가지
+
+        </h2>
+
+        <div style="
+            background:#eff6ff;
+            border:2px solid #bfdbfe;
+            border-radius:16px;
+            padding:20px;
+            margin:25px 0;
+            text-align:center;
+        ">
+
+            <h3 style="margin-bottom:12px;">
+                📊 오늘의 결과
+            </h3>
+
+            <p style="font-size:22px;font-weight:700;">
+
+                ⭐ 업무점수 :
+                <span style="color:#2563eb;">
+                    ${game.score}점
+                </span>
+
+            </p>
+
+            <p style="margin-top:10px;">
+
+                ❤️ 신뢰도 :
+                ${game.trust}
+
+            </p>
+
+        </div>
+
+        <p style="text-align:left; line-height:2.1;">
+
+✅ <b>1. 문제는 숨기지 말고 먼저 공유하기</b><br>
+→ 예상되는 문제는 사후 보고보다 사전 공유가 중요합니다.<br><br>
+
+✅ <b>2. 업무는 우선순위를 고려하여 계획하기</b><br>
+→ 긴급성과 중요도를 기준으로 업무를 처리합니다.<br><br>
+
+✅ <b>3. 협업은 일정 조율과 함께하기</b><br>
+→ 가능한 시간과 방법을 함께 제안하면 원활한 협업이 가능합니다.<br><br>
+
+✅ <b>4. 업무보고는 핵심과 결과 중심으로 하기</b><br>
+→ 무엇을 했는지와 결과를 명확하게 전달합니다.<br><br>
+
+✅ <b>5. 퇴근 전에도 예의와 책임감 잊지 않기</b><br>
+→ 작은 인사와 배려가 좋은 조직문화를 만듭니다.
+
+        </p>
+
+        <div style="
+            background:#f8fafc;
+            border-radius:14px;
+            padding:18px;
+            margin-top:25px;
+            text-align:center;
+            line-height:1.8;
+        ">
+
+            💡 <b>오늘의 한마디</b><br>
+
+            작은 습관이 신뢰를 만들고,<br>
+
+            신뢰가 좋은 직장인을 만듭니다.
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showEnding()">
+
+            🏆 최종 결과 보기
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
 // ==========================
 // 엔딩
 // ==========================
