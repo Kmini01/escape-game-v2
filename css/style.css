@@ -1435,5 +1435,46 @@ img{
 
 }
 /* ==========================
+   엔딩 리포트
+========================== */
+
+.reportBox{
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    margin:18px 0;
+
+    line-height:1.9;
+
+}
+
+/* 역량 리포트만 좌우 정렬 */
+
+.reportRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px 0;
+
+}
+
+/* 가운데 정렬용 */
+
+.reportCenter{
+
+    text-align:center;
+
+}
+/* ==========================
    END
 ========================== */
