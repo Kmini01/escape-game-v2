@@ -3144,7 +3144,7 @@ ${missionTitle(11,"퇴근 시간!")}
 
 <button
 class="choiceBtn"
-onclick="selectMission8(1)">
+onclick="selectMission11(1)">
 
 🙋 "혹시 더 도와드릴 업무가 있을까요?"
 
@@ -3152,7 +3152,7 @@ onclick="selectMission8(1)">
 
 <button
 class="choiceBtn"
-onclick="selectMission8(2)">
+onclick="selectMission11(2)">
 
 😊 "먼저 퇴근하겠습니다.
 고생하셨습니다.
@@ -3162,7 +3162,7 @@ onclick="selectMission8(2)">
 
 <button
 class="choiceBtn"
-onclick="selectMission8(3)">
+onclick="selectMission11(3)">
 
 🚶 인사 없이 조용히 퇴근한다.
 
@@ -3170,7 +3170,7 @@ onclick="selectMission8(3)">
 
 <button
 class="choiceBtn"
-onclick="selectMission8(4)">
+onclick="selectMission11(4)">
 
 👜 6시가 되자마자
 바로 가방을 챙겨 나간다.
