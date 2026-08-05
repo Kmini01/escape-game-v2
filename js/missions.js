@@ -237,7 +237,7 @@ function selectMission1(answer){
 
                 message:
 
-"<b>💡 왜 좋은 선택일까요?</b><br><br>" +
+"<b>💡 왜 아쉬운 선택일까요?</b><br><br>" +
 
 "✔ 지각이 예상될 때는 먼저 상황을 공유하는 것이 중요합니다.<br>" +
 
@@ -249,9 +249,9 @@ function selectMission1(answer){
 
 "예상되는 문제는 '사후 보고'보다 '사전 공유'가 중요합니다.<br><br>" +
 
-"⭐ 업무점수 +10<br>" +
+"⭐ 업무점수 -5<br>" +
 
-"❤️ 신뢰도 +5"
+"❤️ 신뢰도 -10"
             });
 
             break;
@@ -1964,7 +1964,7 @@ ${missionTitle(7,"다른 팀과 협업하기")}
 
 <button
 class="choiceBtn"
-onclick="selectMission6(1)">
+onclick="selectMission7(1)">
 
 🤝 가능합니다.<br>
 
@@ -1975,7 +1975,7 @@ onclick="selectMission6(1)">
 
 <button
 class="choiceBtn"
-onclick="selectMission6(2)">
+onclick="selectMission7(2)">
 
 ⚡ 네!
 지금 바로 보내드리겠습니다.
@@ -1984,7 +1984,7 @@ onclick="selectMission6(2)">
 
 <button
 class="choiceBtn"
-onclick="selectMission6(3)">
+onclick="selectMission7(3)">
 
 😅 지금 바빠서
 어렵습니다.
@@ -1993,7 +1993,7 @@ onclick="selectMission6(3)">
 
 <button
 class="choiceBtn"
-onclick="selectMission6(4)">
+onclick="selectMission7(4)">
 
 📵 답장을 하지 않는다.
 
@@ -2196,7 +2196,7 @@ function showMission8Brief(){
 
         <p>
 
-🕞 <b>현재 시간 : 15:30</b><br><br>
+🕞 <b>현재 시간 : 16:10</b><br><br>
 
 ☎️ <b>대표전화가 울립니다.</b><br><br>
 
@@ -2321,7 +2321,7 @@ function selectMission8(answer){
 
                 progress:10,
 
-                time:"16:30",
+                time:"16:10",
 
                 skill:"communication",
 
