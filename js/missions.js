@@ -1,4 +1,56 @@
+// ==========================
+// Mission 1 브리핑
+// ==========================
 
+function showMission1Brief(){
+
+    document.getElementById("gameContainer").innerHTML = `
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(1,"출근부터 위기!")}
+
+        <p>
+
+🕘 현재 시간 : <b>08:50</b><br><br>
+
+🌧️ 아침부터 폭우가 내려
+지하철이 20분 연착되었습니다.<br><br>
+
+회사까지는 아직 15분 거리입니다.<br><br>
+
+<b>9시까지 출근</b>해야 하는 상황입니다.
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+                신뢰를 잃지 않고<br>
+                안전하게 출근하기
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission1()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
 // ==========================
 // Mission 1
 // 출근부터 위기!
