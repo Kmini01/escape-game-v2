@@ -274,15 +274,15 @@ function showMission2Brief(){
         ${missionTitle(2,"업무 우선순위 정하기")}
 
         <p>
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 첫 출근을 환영합니다."<br><br>
 
 🕘 현재 시간 : <b>09:30</b><br><br>
 
-출근 후 팀장님이 여러 업무를 동시에 요청했습니다.<br><br>
+"${playerName}님, 오늘 오전 11시에 회의가 있습니다."<br><br>
 
-📢 <b>오전 11시에 회의가 예정되어 있습니다.</b><br><br>
-
-회의 준비와 긴급한 업무를 고려하여<br>
-효율적으로 업무 순서를 계획해야 합니다.
+"회의 전까지 업무를 우선순위에 맞게 처리해 주세요."
 
         </p>
 
@@ -571,7 +571,8 @@ function showMission3Brief(){
 🕙 <b>현재 시간 : 10:10</b><br><br>
 
 👨‍💼 <b>팀장</b><br>
-"11시 회의에서 사용할 자료를 출력해 주세요."<br><br>
+
+"${playerName}님, 회의 자료를 출력해 주세요."<br><br>
 
 프린터를 켰지만 갑자기 출력이 되지 않습니다.<br><br>
 
@@ -837,6 +838,66 @@ function selectMission3(answer){
 
 }
 // ==========================
+// Mission 4 브리핑
+// ==========================
+
+function showMission4Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(4,"일정 변경")}
+
+        <p>
+
+🕚 <b>현재 시간 : 11:00</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 회의 시간이 오후 2시로 변경되었습니다."<br><br>
+
+변경된 일정에 맞춰 업무를 다시 계획해 주세요.
+
+갑작스럽게 일정이 변경되었습니다.<br>
+기존 계획을 그대로 진행할지,<br>
+업무 우선순위를 다시 조정할지 판단해야 합니다.<br><br>
+
+⏳ <b>회의까지 약 3시간 남았습니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+변경된 일정에 맞게<br>
+업무 우선순위를 다시 결정하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission4()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+// ==========================
 // Mission 4
 // 회의 일정 재조정
 // ==========================
@@ -851,26 +912,11 @@ function showMission4(){
 
         ${missionTitle(4,"회의 일정이 변경되었습니다!")}
 
-        <p>
+       <p>
 
-🕑 오전 11시 예정이었던 회의가
-<b>오후 2시</b>로 변경되었습니다.<br><br>
+업무 우선순위를 다시 정해보세요.
 
-회의 준비 시간이 3시간 더 확보되었습니다.<br><br>
-
-팀장님이 말씀하셨습니다.<br><br>
-
-<b>
-"남은 시간을 활용해서
-업무를 마무리하고
-2시 회의까지 준비를 완료해주세요."
-</b><br><br>
-
-업무의 중요도와
-선후관계를 고려하여
-가장 효율적인 순서를 선택하세요.
-
-        </p>
+</p>
 
         <div class="orderCard">
 
@@ -1149,6 +1195,65 @@ function checkMission4(){
 
 }
 // ==========================
+// Mission 5 브리핑
+// ==========================
+
+function showMission5Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(5,"자료 찾기")}
+
+        <p>
+
+🕜 <b>현재 시간 : 13:30</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 오후까지 ESG 보고서 초안을 작성해야 합니다."<br><br>
+
+
+공용 폴더에는 다양한 자료가 저장되어 있습니다.<br>
+
+공용 폴더에서 필요한 자료를 찾아주세요.<br><br>
+
+📂 <b>보고서 작성에 필요한 자료를 정확하게 선택해야 합니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+보고서 작성에 필요한<br>
+자료를 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission5()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+// ==========================
 // Mission 5
 // 업무보고서 작성
 // ==========================
@@ -1178,11 +1283,7 @@ ${missionTitle(5,"업무보고서 작성")}
 
 <p>
 
-📢 오후 ESG 회의를 위해<br>
-
-<b>「2026 상반기 ESG 활동 실적 보고서」</b>를 작성해야 합니다.<br><br>
-
-필요한 자료 2개를 선택하세요.
+보고서 작성에 필요한 자료를 2개 선택하세요.
 
 </p>
 
@@ -1449,11 +1550,401 @@ function checkMission5(){
 
 }
 // ==========================
+// Mission 6 브리핑
+// ==========================
+
+function showMission6Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(6,"비즈니스 이메일 작성")}
+
+        <p>
+
+🕝 <b>현재 시간 : 14:30</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 거래처에 보고서 초안을 이메일로 보내주세요."<br><br>
+
+이메일은 회사의 이미지를 보여주는 중요한 업무입니다.<br>
+
+제목과 내용, 첨부파일을 확인한 후 발송해야 합니다.
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+거래처에 보낼<br>
+
+가장 적절한 이메일을 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission6()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+
+
+
+// ==========================
 // Mission 6
-// 다른 팀과 협업
 // ==========================
 
 function showMission6(){
+
+    removeMission();
+
+    document.body.insertAdjacentHTML("beforeend",`
+
+<div id="missionContainer">
+
+<div class="missionCard">
+
+${missionTitle(6,"비즈니스 이메일 작성")}
+
+<p>
+
+거래처에 보낼 이메일을 선택하세요.
+
+</p>
+
+<div class="choiceBtn"
+
+onclick="selectMission6(1)">
+
+① 제목 : 자료<br><br>
+
+첨부합니다.
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission6(2)">
+
+② <b>제목 : ESG 보고서 초안 전달드립니다.</b><br><br>
+
+안녕하세요.<br><br>
+
+요청하신 ESG 보고서 초안을 첨부드립니다.<br><br>
+
+검토 후 의견 주시면 반영하도록 하겠습니다.<br><br>
+
+감사합니다.
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission6(3)">
+
+③ 자료 보냈습니다~^^<br><br>
+
+확인 부탁드려요!
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission6(4)">
+
+④ (제목 없음)<br><br>
+
+첨부파일
+
+</div>
+
+</div>
+
+</div>
+
+`);
+
+}
+// ==========================
+// Mission 6 선택
+// ==========================
+
+function selectMission6(answer){
+
+    removeMission();
+
+    switch(answer){
+
+        // ==========================
+        // ①
+        // ==========================
+
+        case 1:
+
+            finishMission({
+
+                score:3,
+
+                trust:1,
+
+                progress:10,
+
+                time:"15:00",
+
+                skill:"communication",
+
+                skillPoint:1,
+
+                icon:"🙂",
+
+                title:"무난한 선택",
+
+                message:
+
+"<b>🙂 나쁘지 않은 선택입니다.</b><br><br>" +
+
+"✔ 이메일는 전달되지만 제목이 너무 단순하여 업무 내용을 파악하기 어렵습니다.<br>" +
+
+"✔ 조금 더 구체적인 제목을 작성하면 업무 효율이 높아집니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"메일 제목만 보고도 업무 내용을 알 수 있도록 작성하는 것이 좋습니다.<br><br>" +
+
+"⭐ 업무점수 +3<br>" +
+
+"❤️ 신뢰도 +1"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ② 정답
+        // ==========================
+
+        case 2:
+
+            finishMission({
+
+                score:10,
+
+                trust:5,
+
+                progress:10,
+
+                time:"15:00",
+
+                skill:"communication",
+
+                skillPoint:1,
+
+                icon:"😊",
+
+                title:"정답!",
+
+                message:
+
+"<b>💡 왜 좋은 선택일까요?</b><br><br>" +
+
+"✔ 메일 제목으로 업무 목적을 명확하게 전달했습니다.<br>" +
+
+"✔ 인사말과 첨부파일 안내를 포함하여 정중하게 작성했습니다.<br>" +
+
+"✔ 상대방이 다음 행동을 알 수 있도록 검토 요청도 함께 전달했습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"비즈니스 이메일은 '제목 → 인사 → 내용 → 첨부 → 마무리' 순서로 작성하면 좋습니다.<br><br>" +
+
+"⭐ 업무점수 +10<br>" +
+
+"❤️ 신뢰도 +5"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ③
+        // ==========================
+
+        case 3:
+
+            finishMission({
+
+                score:-3,
+
+                trust:-2,
+
+                progress:10,
+
+                time:"15:00",
+
+                skill:"communication",
+
+                skillPoint:0,
+
+                icon:"😅",
+
+                title:"조금 아쉬운 선택",
+
+                message:
+
+"<b>😅 왜 아쉬울까요?</b><br><br>" +
+
+"✔ 지나치게 편한 표현과 이모티콘은 비즈니스 이메일에 적합하지 않습니다.<br>" +
+
+"✔ 거래처에는 정중하고 공식적인 표현을 사용하는 것이 좋습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"회사 이메일은 메신저가 아니라 공식 문서라는 점을 기억하세요.<br><br>" +
+
+"⭐ 업무점수 -3<br>" +
+
+"❤️ 신뢰도 -2"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ④
+        // ==========================
+
+        case 4:
+
+            finishMission({
+
+                score:-5,
+
+                trust:-5,
+
+                progress:10,
+
+                time:"15:00",
+
+                skill:"communication",
+
+                skillPoint:0,
+
+                icon:"❌",
+
+                title:"아쉬운 선택",
+
+                message:
+
+"<b>❌ 왜 아쉬운 선택일까요?</b><br><br>" +
+
+"✔ 제목이 없으면 상대방이 메일의 목적을 바로 파악하기 어렵습니다.<br>" +
+
+"✔ 첨부파일만 보내는 것은 중요한 정보를 전달하지 못할 수 있습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"이메일을 보내기 전에는 제목, 첨부파일, 수신인을 다시 한 번 확인하세요.<br><br>" +
+
+"⭐ 업무점수 -5<br>" +
+
+"❤️ 신뢰도 -5"
+
+            });
+
+            break;
+
+    }
+
+}
+// ==========================
+// Mission 7 브리핑
+// ==========================
+
+function showMission7Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(7,"협업 요청")}
+
+        <p>
+
+🕒 <b>현재 시간 : 15:00</b><br><br>
+
+👩‍💼 <b>마케팅팀</b><br>
+
+"${playerName}님, 오늘 4시까지 자료를 받을 수 있을까요?"<br><br>
+
+현재 나도 업무를 진행 중이지만,
+다른 부서에서는 협조를 요청하고 있습니다.<br><br>
+
+🤝 <b>협업은 서로의 일정을 고려하며 소통하는 것이 중요합니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+상황에 맞는<br>
+
+가장 적절한 협업 방법을 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission7()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+// ==========================
+// Mission 7
+// 다른 팀과 협업
+// ==========================
+
+function showMission7(){
 
     document.getElementById("gameContainer").innerHTML=`
 
@@ -1461,20 +1952,13 @@ function showMission6(){
 
 <div class="missionCard">
 
-${missionTitle(6,"다른 팀과 협업하기")}
+${missionTitle(7,"다른 팀과 협업하기")}
 
 <p>
 
-📢 마케팅팀에서 연락이 왔습니다.<br><br>
+협업 요청을 받았습니다.
 
-"오늘 오후 4시까지 ESG 실적 데이터를
-공유해주실 수 있을까요?<br>
-내일 홍보자료 제작에 꼭 필요합니다."<br><br>
-
-현재 나도 업무보고서를
-마무리해야 하는 상황입니다.<br><br>
-
-어떻게 답하시겠습니까?
+어떻게 대응하시겠습니까?
 
 </p>
 
@@ -1524,10 +2008,10 @@ onclick="selectMission6(4)">
 }
 
 // ==========================
-// Mission6 선택
+// Mission7 선택
 // ==========================
 
-function selectMission6(answer){
+function selectMission7(answer){
 
     removeMission();
 
@@ -1697,11 +2181,712 @@ function selectMission6(answer){
 
 }
 // ==========================
-// Mission 7
+// Mission 8 브리핑
+// ==========================
+
+function showMission8Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(8,"전화 응대")}
+
+        <p>
+
+🕞 <b>현재 시간 : 15:30</b><br><br>
+
+☎️ <b>대표전화가 울립니다.</b><br><br>
+
+"${playerName}님, 전화 좀 받아주시겠어요?"<br>
+
+전화를 받은 사람의 응대가 회사의 첫인상이 될 수 있습니다.<br><br>
+
+📞 <b>정중하고 정확한 전화 응대가 중요합니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+가장 적절한<br>
+
+전화 응대를 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission8()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+function showMission8(){
+
+    removeMission();
+
+    document.body.insertAdjacentHTML("beforeend",`
+
+<div id="missionContainer">
+
+<div class="missionCard">
+
+${missionTitle(8,"전화 응대")}
+
+<p>
+
+전화가 걸려왔습니다.
+
+어떻게 응대하시겠습니까?
+
+</p>
+
+<div class="choiceBtn"
+onclick="selectMission8(1)">
+
+① 여보세요?
+
+</div>
+
+<div class="choiceBtn"
+onclick="selectMission8(2)">
+
+② 네?
+
+</div>
+
+<div class="choiceBtn"
+onclick="selectMission8(3)">
+
+③ 안녕하세요.<br>
+
+00컴퍼니 경영지원팀 ${playerName}입니다.<br>
+
+무엇을 도와드릴까요?
+
+</div>
+
+<div class="choiceBtn"
+onclick="selectMission8(4)">
+
+④ 벨이 울리지만 받지 않는다.
+
+</div>
+
+</div>
+
+</div>
+
+`);
+
+}
+
+// ==========================
+// Mission 8 선택
+// ==========================
+
+function selectMission8(answer){
+
+    removeMission();
+
+    switch(answer){
+
+        // ==========================
+        // ①
+        // ==========================
+
+        case 1:
+
+            finishMission({
+
+                score:3,
+
+                trust:1,
+
+                progress:10,
+
+                time:"16:30",
+
+                skill:"communication",
+
+                skillPoint:1,
+
+                icon:"🙂",
+
+                title:"무난한 선택",
+
+                message:
+
+"<b>🙂 나쁘지 않은 선택입니다.</b><br><br>" +
+
+"✔ 전화를 받은 것은 좋지만 '여보세요?'만으로는 회사의 첫인상을 전달하기 어렵습니다.<br>" +
+
+"✔ 회사명과 이름을 함께 말하면 더 전문적인 응대가 됩니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"전화 응대 시에는 회사명과 본인의 이름을 먼저 밝히는 것이 좋습니다.<br><br>" +
+
+"⭐ 업무점수 +3<br>" +
+
+"❤️ 신뢰도 +1"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ②
+        // ==========================
+
+        case 2:
+
+            finishMission({
+
+                score:-3,
+
+                trust:-3,
+
+                progress:10,
+
+                time:"16:30",
+
+                skill:"communication",
+
+                skillPoint:0,
+
+                icon:"😅",
+
+                title:"조금 아쉬운 선택",
+
+                message:
+
+"<b>😅 조금 아쉬운 선택입니다.</b><br><br>" +
+
+"✔ 짧은 대답만으로는 친절하고 전문적인 인상을 주기 어렵습니다.<br>" +
+
+"✔ 상대방이 회사에 전화했음을 알 수 있도록 응대하는 것이 좋습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"'안녕하세요. ○○회사 ○○팀 ○○입니다.'를 습관처럼 사용해 보세요.<br><br>" +
+
+"⭐ 업무점수 -3<br>" +
+
+"❤️ 신뢰도 -3"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ③ 정답
+        // ==========================
+
+        case 3:
+
+            finishMission({
+
+                score:10,
+
+                trust:5,
+
+                progress:10,
+
+                time:"16:30",
+
+                skill:"communication",
+
+                skillPoint:1,
+
+                icon:"😊",
+
+                title:"정답!",
+
+                message:
+
+"<b>💡 왜 좋은 선택일까요?</b><br><br>" +
+
+"✔ 회사명과 부서, 이름을 먼저 밝혀 신뢰감을 주었습니다.<br>" +
+
+"✔ 정중한 인사와 함께 용건을 확인하여 전문적인 응대를 했습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"'회사명 → 부서 → 이름 → 인사 → 용건 확인' 순서로 응대하면 좋습니다.<br><br>" +
+
+"⭐ 업무점수 +10<br>" +
+
+"❤️ 신뢰도 +5"
+
+            });
+
+            break;
+
+
+
+        // ==========================
+        // ④
+        // ==========================
+
+        case 4:
+
+            finishMission({
+
+                score:-5,
+
+                trust:-5,
+
+                progress:10,
+
+                time:"16:30",
+
+                skill:"communication",
+
+                skillPoint:0,
+
+                icon:"❌",
+
+                title:"아쉬운 선택",
+
+                message:
+
+"<b>❌ 왜 아쉬운 선택일까요?</b><br><br>" +
+
+"✔ 대표전화는 회사의 첫인상을 결정할 수 있습니다.<br>" +
+
+"✔ 벨이 울리는데 받지 않으면 고객과 거래처의 신뢰를 잃을 수 있습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"전화를 받을 수 없는 상황이라면 다른 직원에게 부탁하거나 빠르게 응대하는 것이 좋습니다.<br><br>" +
+
+"⭐ 업무점수 -5<br>" +
+
+"❤️ 신뢰도 -5"
+
+            });
+
+            break;
+
+    }
+
+}
+
+// ==========================
+// Mission 9 브리핑
+// ==========================
+
+function showMission9Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(9,"실수했을 때의 대처")}
+
+        <p>
+
+🕔 <b>현재 시간 : 17:10</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 거래처에서 연락이 왔습니다."<br><br>
+
+확인해 보니 잘못된 파일이 전달되었습니다.<br>
+
+실수는 누구나 할 수 있지만,<br>
+
+어떻게 대응하는지가 더 중요합니다.
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+실수를 발견했을 때<br>
+
+가장 적절한 대응을 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission9()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+
+
+
+// ==========================
+// Mission 9
+// ==========================
+
+function showMission9(){
+
+    removeMission();
+
+    document.body.insertAdjacentHTML("beforeend",`
+
+<div id="missionContainer">
+
+<div class="missionCard">
+
+${missionTitle(9,"실수했을 때의 대처")}
+
+<p>
+
+잘못된 파일을 거래처에 보낸 것을 확인했습니다.
+
+어떻게 대응하시겠습니까?
+
+</p>
+
+<div class="choiceBtn"
+
+onclick="selectMission9(1)">
+
+① 팀장에게 바로 보고하고<br><br>
+
+거래처에 수정된 파일을 다시 보낸다.
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission9(2)">
+
+② 아무도 모를 것 같으니<br><br>
+
+그냥 기다린다.
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission9(3)">
+
+③ 내일 출근해서<br><br>
+
+이야기한다.
+
+</div>
+
+<div class="choiceBtn"
+
+onclick="selectMission9(4)">
+
+④ 다른 직원이 보낸 것처럼<br><br>
+
+이야기한다.
+
+</div>
+
+</div>
+
+</div>
+
+`);
+
+}
+// ==========================
+// Mission 9 선택
+// ==========================
+
+function selectMission9(answer){
+
+    removeMission();
+
+    switch(answer){
+
+        // ==========================
+        // ① 정답
+        // ==========================
+
+        case 1:
+
+            finishMission({
+
+                score:10,
+
+                trust:8,
+
+                progress:10,
+
+                time:"17:40",
+
+                skill:"problem",
+
+                skillPoint:1,
+
+                icon:"😊",
+
+                title:"정답!",
+
+                message:
+
+"<b>💡 왜 좋은 선택일까요?</b><br><br>" +
+
+"✔ 실수를 발견했다면 즉시 보고하고 빠르게 수정하는 것이 가장 중요합니다.<br>" +
+
+"✔ 신속한 대응은 피해를 최소화하고 고객과 조직의 신뢰를 지킬 수 있습니다.<br>" +
+
+"✔ 실수를 숨기기보다 책임감 있게 해결하는 자세가 좋은 직장인의 모습입니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"'빠른 보고 → 빠른 수정 → 재발 방지'를 기억하세요.<br><br>" +
+
+"⭐ 업무점수 +10<br>" +
+
+"❤️ 신뢰도 +8"
+
+            });
+
+            break;
+
+
+        // ==========================
+        // ②
+        // ==========================
+
+        case 2:
+
+            finishMission({
+
+                score:-5,
+
+                trust:-8,
+
+                progress:10,
+
+                time:"17:40",
+
+                skill:"problem",
+
+                skillPoint:0,
+
+                icon:"❌",
+
+                title:"아쉬운 선택",
+
+                message:
+
+"<b>❌ 왜 아쉬운 선택일까요?</b><br><br>" +
+
+"✔ 실수를 숨기면 더 큰 문제로 이어질 수 있습니다.<br>" +
+
+"✔ 시간이 지날수록 피해가 커질 가능성이 높습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"실수를 발견했다면 즉시 공유하고 해결하는 것이 가장 중요합니다.<br><br>" +
+
+"⭐ 업무점수 -5<br>" +
+
+"❤️ 신뢰도 -8"
+
+            });
+
+            break;
+
+
+        // ==========================
+        // ③
+        // ==========================
+
+        case 3:
+
+            finishMission({
+
+                score:-3,
+
+                trust:-5,
+
+                progress:10,
+
+                time:"17:40",
+
+                skill:"problem",
+
+                skillPoint:0,
+
+                icon:"😅",
+
+                title:"조금 아쉬운 선택",
+
+                message:
+
+"<b>😅 조금 늦었습니다.</b><br><br>" +
+
+"✔ 실수는 최대한 빨리 공유할수록 피해를 줄일 수 있습니다.<br>" +
+
+"✔ 다음 날까지 미루는 것은 좋은 대응이 아닙니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"문제는 발견 즉시 보고하는 습관을 가져보세요.<br><br>" +
+
+"⭐ 업무점수 -3<br>" +
+
+"❤️ 신뢰도 -5"
+
+            });
+
+            break;
+
+
+        // ==========================
+        // ④
+        // ==========================
+
+        case 4:
+
+            finishMission({
+
+                score:-10,
+
+                trust:-10,
+
+                progress:10,
+
+                time:"17:40",
+
+                skill:"problem",
+
+                skillPoint:0,
+
+                icon:"🚨",
+
+                title:"잘못된 선택",
+
+                message:
+
+"<b>🚨 가장 피해야 할 행동입니다.</b><br><br>" +
+
+"✔ 책임을 다른 사람에게 돌리는 행동은 신뢰를 크게 잃게 됩니다.<br>" +
+
+"✔ 실수보다 책임을 회피하는 태도가 더 큰 문제가 될 수 있습니다.<br><br>" +
+
+"<b>실무 TIP</b><br>" +
+
+"실수는 인정하고 해결하는 사람이 더 신뢰받습니다.<br><br>" +
+
+"⭐ 업무점수 -10<br>" +
+
+"❤️ 신뢰도 -10"
+
+            });
+
+            break;
+
+    }
+
+}
+// ==========================
+// Mission 10 브리핑
+// ==========================
+
+function showMission10Brief(){
+
+    document.getElementById("gameContainer").innerHTML=`
+
+<div id="missionContainer">
+
+    <div class="missionCard">
+
+        ${missionTitle(10,"퇴근 전 마지막 점검")}
+
+        <p>
+
+🕕 <b>현재 시간 : 18:00</b><br><br>
+
+👨‍💼 <b>팀장</b><br>
+
+"${playerName}님, 오늘 하루 정말 수고 많으셨습니다."<br><br>
+
+업무도 모두 마무리되었습니다.<br>
+
+이제 퇴근 시간이지만,
+마지막 행동이 오늘의 인상을 결정할 수 있습니다.<br><br>
+
+🚪 <b>좋은 마무리는 좋은 첫인상을 완성합니다.</b>
+
+        </p>
+
+        <div class="orderCard">
+
+            <h3>🎯 오늘의 목표</h3>
+
+            <p style="margin:10px 0 0; line-height:1.8;">
+
+퇴근 전<br>
+
+가장 적절한 행동을 선택하세요.
+
+            </p>
+
+        </div>
+
+        <button
+            class="choiceBtn"
+            onclick="showMission10()">
+
+            ▶ 미션 시작
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+}
+
+// ==========================
+// Mission 10
 // 퇴근 전 업무보고
 // ==========================
 
-function showMission7(){
+function showMission10(){
 
     document.getElementById("gameContainer").innerHTML=`
 
@@ -1709,7 +2894,7 @@ function showMission7(){
 
 <div class="missionCard">
 
-${missionTitle(7,"퇴근 전 업무보고")}
+${missionTitle10,"퇴근 전 업무보고")}
 
 <p>
 
@@ -1767,10 +2952,10 @@ onclick="selectMission7(4)">
 }
 
 // ==========================
-// Mission7 선택
+// Mission10 선택
 // ==========================
 
-function selectMission7(answer){
+function selectMission10(answer){
 
     removeMission();
 
@@ -1934,11 +3119,11 @@ function selectMission7(answer){
 
 }
 // ==========================
-// Mission 8
+// Mission 11
 // 퇴근하기
 // ==========================
 
-function showMission8(){
+function showMission11(){
 
     document.getElementById("gameContainer").innerHTML=`
 
@@ -1946,7 +3131,7 @@ function showMission8(){
 
 <div class="missionCard">
 
-${missionTitle(8,"퇴근 시간!")}
+${missionTitle(11,"퇴근 시간!")}
 
 <p>
 
@@ -2002,10 +3187,10 @@ onclick="selectMission8(4)">
 }
 
 // ==========================
-// Mission8 선택
+// Mission11 선택
 // ==========================
 
-function selectMission8(answer){
+function selectMission11(answer){
 
     removeMission();
 
