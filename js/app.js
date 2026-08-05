@@ -59,31 +59,25 @@ function makeStars(score){
     let star = 1;
 
     if(score >= 85){
-
         star = 5;
-
     }
-
     else if(score >= 70){
-
         star = 4;
-
     }
-
     else if(score >= 55){
-
         star = 3;
-
     }
-
     else if(score >= 40){
-
         star = 2;
-
     }
 
-    return "★".repeat(star)
-    +"☆".repeat(5-star);
+    return `
+<span style="color:#facc15;">
+${"★".repeat(star)}
+</span><span style="color:#d1d5db;">
+${"☆".repeat(5-star)}
+</span>
+`;
 
 }
 
@@ -711,38 +705,28 @@ async function saveGameResult(){
 
     try{
 
-        await addDoc(
+       await addDoc(
 
-            collection(db,"players"),
+    collection(db,"players"),
 
-            {
+    {
 
-                name:player.name,
+        name: playerName,
+        gender: gender,
 
-                gender:player.gender,
+        score: game.score,
+        trust: game.trust,
+        progress: game.progress,
+        playTime: game.time,
 
-                score:player.score,
+        schedule: game.schedule,
+        problem: game.problem,
+        communication: game.communication,
+        report: game.report,
+        manner: game.manner,
 
-                trust:player.trust,
-
-                progress:player.progress,
-
-                playTime:player.time,
-
-                createdAt:serverTimestamp()
-
-            }
-
-        );
-
-        console.log("Firebase 저장 완료");
+        createdAt: serverTimestamp()
 
     }
 
-    catch(e){
-
-        console.error(e);
-
-    }
-
-}
+);
